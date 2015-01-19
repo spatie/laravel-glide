@@ -19,7 +19,7 @@ use League\Glide\Manipulators\Sharpen;
 use League\Glide\Manipulators\Size;
 use League\Glide\Server;
 
-class LaravelGlideServiceProvider extends ServiceProvider
+class GlideServiceProvider extends ServiceProvider
 {
 
     /**
