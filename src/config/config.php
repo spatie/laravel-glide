@@ -2,7 +2,7 @@
 
 return [
     /*
-     * The path were Glide will listen for request
+     * The base URL where Glide will listen for requests
      */
     'baseURL' => 'img',
 
@@ -23,7 +23,7 @@ return [
         ],
 
     /*
-     * The maximum allow total image size in pixels
+     * The maximum allowed total image size in pixels
      */
     'maxSize' => 2000 * 2000
 ];

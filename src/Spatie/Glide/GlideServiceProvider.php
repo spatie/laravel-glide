@@ -36,7 +36,7 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('spatie/searchindex');
+        $this->package('spatie/laravel-glide');
     }
 
     /**
