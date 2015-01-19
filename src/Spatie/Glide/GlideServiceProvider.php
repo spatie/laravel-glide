@@ -115,6 +115,10 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function writeIgnoreFile($directory)
     {
-        $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $directory.'/.gitignore');
+        $destinationFile = $directory . '/.gitignore';
+
+        if (!file_exists($destinationFile)) {
+            $this->app['files']->copy(__DIR__ . '/../../stubs/gitignore.txt', $destinationFile);
+        }
     }
 }
