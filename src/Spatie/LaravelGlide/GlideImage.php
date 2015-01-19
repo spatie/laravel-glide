@@ -1,5 +1,5 @@
 <?php
-namespace Spatie\Services\Glide;
+namespace Spatie\Glide;
 
 use Config;
 use League\Glide\Factories\UrlBuilder;

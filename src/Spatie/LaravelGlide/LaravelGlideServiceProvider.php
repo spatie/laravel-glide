@@ -1,4 +1,4 @@
-<?php namespace Spatie\LaravelGlide;
+<?php namespace Spatie\Glide;
 
 use Illuminate\Support\ServiceProvider;
 use Intervention\Image\ImageManager;

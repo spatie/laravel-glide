@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Spatie\\LaravelGlide": "src/"
+            "Spatie\\Glide": "src/"
         }
     },
     "minimum-stability": "stable"
