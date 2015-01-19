@@ -3,7 +3,9 @@
 [![Latest Stable Version](https://poser.pugx.org/spatie/laravel-glide/version.png)](https://packagist.org/packages/spatie/laravel-glide)
 [![License](https://poser.pugx.org/spatie/laravel-glide/license.png)](https://packagist.org/packages/spatie/laravel-glide)
 
-This package provides a Service Provider that allows you to very easily integrate Glide into a Laravel project.
+This package provides a Service Provider that allows you to very easily integrate [Glide](http://glide.thephpleague.com/) into a Laravel project.
+
+[Glide](http://glide.thephpleague.com/) is a easy on-demand image manipulation library written in PHP. It's part of the [League of Extraordinary Packages](http://thephpleague.com/).
 
 ## Installation
 
