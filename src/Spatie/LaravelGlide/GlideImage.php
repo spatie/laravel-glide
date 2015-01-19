@@ -26,7 +26,7 @@ class GlideImage
     /**
      * Set the conversion parameters
      *
-     * @param mixed $conversionParameters
+     * @param  mixed $conversionParameters
      * @return $this
      */
     public function setConversionParameters($conversionParameters)
@@ -43,11 +43,8 @@ class GlideImage
      */
     public function getURL()
     {
-
         $urlBuilder = UrlBuilder::create('img', Config::get('app.key'));
 
         return $urlBuilder->getUrl($this->imageURL, $this->conversionParameters);
     }
-
-
 }

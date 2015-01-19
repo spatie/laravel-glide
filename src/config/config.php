@@ -9,19 +9,17 @@ return [
     /*
      * The adapter and parameters that Glide will use as input
      */
-    'source' =>
-        [
+    'source' => [
             'adapter' => 'local',
-            'path' => storage_path('images')
+            'path' => storage_path('images'),
         ],
 
     /*
      * The adapter and parameters that Glide will use for caching images
      */
-    'cache' =>
-        [
+    'cache' => [
             'adapter' => 'local',
-            'path' => storage_path('glide/cache')
+            'path' => storage_path('glide/cache'),
         ],
 
     /*
