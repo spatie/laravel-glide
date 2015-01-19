@@ -1,6 +1,7 @@
 {
     "name": "spatie/laravel-glide",
-    "description": "",
+    "description": "A Glide Service Provider for Laravel",
+    "license": "MIT",
     "authors": [
         {
             "name": "Freek Van der Herten",
