@@ -55,6 +55,7 @@ class GlideServiceProvider extends ServiceProvider
             $cache = new Filesystem(
                 new Local($this->app['config']->get('laravel-glide::config.cache.path'))
             );
+            $this->writeIgnoreFile($this->app['config']->get('laravel-glide::config.cache.path'));
 
             // Set image manager
             $imageManager = new ImageManager();
@@ -105,5 +106,15 @@ class GlideServiceProvider extends ServiceProvider
     public function provides()
     {
         return ['laravel-glide'];
+    }
+
+    /**
+     * Copy the gitignore stub to the given directory
+     *
+     * @param $directory
+     */
+    public function writeIgnoreFile($directory)
+    {
+        $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $directory.'/.gitignore');
     }
 }
