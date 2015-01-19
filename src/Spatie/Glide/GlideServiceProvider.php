@@ -37,15 +37,9 @@ class GlideServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->package('spatie/laravel-glide');
-    }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
+        $this->app['config']->get('laravel-glide');
+
         $this->app['router']->get($this->app['config']->get('laravel-glide::config.baseURL').'/{all}', function () {
 
             $request = $this->app['request'];
@@ -94,12 +88,22 @@ class GlideServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+
+    }
+
+    /**
      * Get the services provided by the provider.
      *
      * @return array
      */
     public function provides()
     {
-        return [];
+        return ['laravel-glide'];
     }
 }
