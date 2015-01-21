@@ -96,6 +96,13 @@ class GlideServiceProvider extends ServiceProvider
     public function register()
     {
 
+        $this->app->bind('laravel-glide-image', function() {
+            $glideImage = new GlideImage();
+            $glideImage->setSignKey($this->app['config']->get('app.key'));
+
+            return $glideImage;
+        });
+
     }
 
     /**
@@ -105,7 +112,7 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['laravel-glide'];
+        return ['laravel-glide', 'laravel-glide-image'];
     }
 
     /**

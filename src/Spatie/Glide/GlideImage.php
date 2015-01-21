@@ -3,23 +3,40 @@ namespace Spatie\Glide;
 
 use Config;
 use League\Glide\Factories\UrlBuilder;
+use Illuminate\Foundation\Application;
 
 class GlideImage
 {
-    protected $imageURL;
+    protected $imagePath;
+    
+    protected $signKey;
 
     protected $conversionParameters;
 
+    
     /**
-     * Set the image URL that needs to be converted
+     * Set the path to the image that needs to be converted
      *
-     * @param $imageURL
+     * @param $imagePath
      * @return $this
      */
-    public function setImageURL($imageURL)
+    public function setimagePath($imagePath)
     {
-        $this->imageURL = $imageURL;
+        $this->imagePath = $imagePath;
 
+        return $this;
+    }
+
+    /**
+     * Set the signkey used to secure the image url
+     * 
+     * @param $signKey
+     * @return $this
+     */
+    public function setSignKey($signKey)
+    {
+        $this->signKey = $signKey;
+        
         return $this;
     }
 
@@ -43,8 +60,18 @@ class GlideImage
      */
     public function getURL()
     {
-        $urlBuilder = UrlBuilder::create('img', Config::get('app.key'));
+        $urlBuilder = UrlBuilder::create('img', $this->signKey);
 
-        return $urlBuilder->getUrl($this->imageURL, $this->conversionParameters);
+        return $urlBuilder->getUrl($this->imagePath, $this->conversionParameters);
+    }
+
+    /**
+     * The string representation of this object is the URL to the image
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getUrl();
     }
 }
