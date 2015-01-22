@@ -98,7 +98,9 @@ class GlideServiceProvider extends ServiceProvider
 
         $this->app->bind('laravel-glide-image', function() {
             $glideImage = new GlideImage();
-            $glideImage->setSignKey($this->app['config']->get('app.key'));
+            $glideImage
+                ->setSignKey($this->app['config']->get('app.key'))
+                ->setBaseURL($this->app['config']->get('laravel-glide::config.baseURL'));
 
             return $glideImage;
         });

@@ -9,6 +9,8 @@ class GlideImage
     protected $imagePath;
     
     protected $signKey;
+    
+    protected $baseURL;
 
     protected $conversionParameters;
 
@@ -22,6 +24,19 @@ class GlideImage
     public function setImagePath($imagePath)
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * Set the base URL
+     *
+     * @param string $baseURL
+     * @return $this
+     */
+    public function setBaseURL($baseURL)
+    {
+        $this->baseURL = $baseURL;
 
         return $this;
     }
@@ -73,4 +88,5 @@ class GlideImage
     {
         return $this->getUrl();
     }
+
 }
