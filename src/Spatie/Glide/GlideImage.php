@@ -1,20 +1,18 @@
 <?php
 namespace Spatie\Glide;
 
-use Config;
 use League\Glide\Factories\UrlBuilder;
 
 class GlideImage
 {
     protected $imagePath;
-    
+
     protected $signKey;
-    
+
     protected $baseURL;
 
     protected $conversionParameters;
 
-    
     /**
      * Set the path to the image that needs to be converted
      *
@@ -31,7 +29,7 @@ class GlideImage
     /**
      * Set the base URL
      *
-     * @param string $baseURL
+     * @param  string $baseURL
      * @return $this
      */
     public function setBaseURL($baseURL)
@@ -43,14 +41,14 @@ class GlideImage
 
     /**
      * Set the signkey used to secure the image url
-     * 
+     *
      * @param $signKey
      * @return $this
      */
     public function setSignKey($signKey)
     {
         $this->signKey = $signKey;
-        
+
         return $this;
     }
 
@@ -88,5 +86,4 @@ class GlideImage
     {
         return $this->getUrl();
     }
-
 }

@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class GlideImageFacade extends Facade {
+class GlideImageFacade extends Facade
+{
 
     /**
      * Get the registered name of the component.
@@ -13,5 +14,4 @@ class GlideImageFacade extends Facade {
     {
         return 'laravel-glide-image';
     }
-
 }

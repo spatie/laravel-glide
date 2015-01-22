@@ -95,8 +95,7 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-        $this->app->bind('laravel-glide-image', function() {
+        $this->app->bind('laravel-glide-image', function () {
             $glideImage = new GlideImage();
             $glideImage
                 ->setSignKey($this->app['config']->get('app.key'))
@@ -104,7 +103,6 @@ class GlideServiceProvider extends ServiceProvider
 
             return $glideImage;
         });
-
     }
 
     /**
@@ -124,10 +122,10 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function writeIgnoreFile($directory)
     {
-        $destinationFile = $directory . '/.gitignore';
+        $destinationFile = $directory.'/.gitignore';
 
         if (!file_exists($destinationFile)) {
-            $this->app['files']->copy(__DIR__ . '/../../stubs/gitignore.txt', $destinationFile);
+            $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
         }
     }
 }
