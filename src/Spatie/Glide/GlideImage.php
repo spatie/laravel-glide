@@ -19,7 +19,7 @@ class GlideImage
      * @param $imagePath
      * @return $this
      */
-    public function setimagePath($imagePath)
+    public function setImagePath($imagePath)
     {
         $this->imagePath = $imagePath;
 
