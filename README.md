@@ -29,7 +29,7 @@ You must install this service provider.
 ];
 ```
 
-This package also comes with a facade, which provides an easy way generate images.
+This package also comes with a facade, which provides an easy way to generate images.
 
 ```php
 
