@@ -95,7 +95,7 @@ Assuming you've got an image named "kayaks.jpg" in "app/storage/images" (= the d
 
 
 ```php
-<img src="{{ GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale'])}}" />
+<img src="{{ GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
 
 The function will output an url to a greyscale version of kayaks.jpg that has a with of 50 pixels.
