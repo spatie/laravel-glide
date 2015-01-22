@@ -98,6 +98,6 @@ Assuming you've got an image named "kayaks.jpg" in "app/storage/images" (= the d
 <img src="{{ GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
 
-The function will output an url to a greyscale version of kayaks.jpg that has a with of 50 pixels.
+The function will output an url to a greyscale version of kayaks.jpg that has a with of 50 pixels. As soon as the url gets hit by your browsers, this image will be generated on the fly.
 
 Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
