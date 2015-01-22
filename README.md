@@ -40,6 +40,7 @@ This package also comes with a facade, which provides an easy way to generate im
 'aliases' => array(
 	...
     'GlideImage'       => 'Spatie\Glide\GlideImageFacade',
+    ...
 )
 ```
 
