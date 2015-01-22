@@ -48,8 +48,56 @@ You can publish the config file of the package using artisan.
 php artisan config:publish spatie/laravel-glide
 ```
 
+The config file looks like this:
+```php
+
+return [
+    /*
+     * URLs to generated images will start with this string
+     *
+     */
+    'baseURL' => 'img',
+
+    /*
+     * The adapter and parameters that Glide will use as input
+     * You should put your original images in this directory
+     *
+     */
+    'source' => [
+            'adapter' => 'local',
+            'path' => storage_path('images'),
+        ],
+
+    /*
+     * The adapter and parameters that Glide will use for caching images
+     * A .gitignore file will be automatically placed in this directory
+     * so you don't accidentally end up committing these images
+     *
+     */
+    'cache' => [
+            'adapter' => 'local',
+            'path' => storage_path('glide-cache'),
+        ],
+
+    /*
+     * The maximum allowed total image size in pixels
+     */
+    'maxSize' => 2000 * 2000
+];
+```
+
+
 The options in the config file are set with sane default values and they should be self-explanatory.
 
 ## Usage 
 
-Coming soon...
+Assuming you've got an image named "kayaks.jpg" in "app/storage/images" (= the default input directory) you can use this code in a blade view.
+
+
+```php
+<img src="{{ GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale'])}}" />
+```
+
+The function will output an url to a greyscale version of kayaks.jpg that has a with of 50 pixels.
+
+Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.

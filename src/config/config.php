@@ -2,12 +2,15 @@
 
 return [
     /*
-     * The base URL where Glide will listen for requests
+     * URLs to generated images will start with this string
+     *
      */
     'baseURL' => 'img',
 
     /*
      * The adapter and parameters that Glide will use as input
+     * You should put your original images in this directory
+     *
      */
     'source' => [
             'adapter' => 'local',
@@ -16,6 +19,9 @@ return [
 
     /*
      * The adapter and parameters that Glide will use for caching images
+     * A .gitignore file will be automatically placed in this directory
+     * so you don't accidentally end up committing these images
+     *
      */
     'cache' => [
             'adapter' => 'local',
