@@ -3,7 +3,6 @@ namespace Spatie\Glide;
 
 use Config;
 use League\Glide\Factories\UrlBuilder;
-use Illuminate\Foundation\Application;
 
 class GlideImage
 {
