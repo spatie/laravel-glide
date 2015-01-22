@@ -11,7 +11,7 @@ class GlideImageFacade extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'laraval-glide-image';
+        return 'laravel-glide-image';
     }
 
 }
