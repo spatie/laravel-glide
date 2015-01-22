@@ -1,4 +1,4 @@
-<?php namespace Spatie\Services\MediaLibrary\Facades;
+<?php namespace Spatie\Glide;
 
 use Illuminate\Support\Facades\Facade;
 
