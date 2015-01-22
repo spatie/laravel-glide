@@ -29,6 +29,19 @@ You must install this service provider.
 ];
 ```
 
+This package also comes with a facade, which provides an easy way generate images.
+
+```php
+
+// Laravel 4: app/config/app.php
+
+'aliases' => array(
+	...
+    'GlideImage'       => 'Spatie\Glide\GlideImageFacade',
+)
+```
+
+
 You can publish the config file of the package using artisan.
 
 ```bash
