@@ -5,9 +5,9 @@
 
 This package provides a Service Provider that allows you to very easily integrate [Glide](http://glide.thephpleague.com/) into a Laravel project.
 
-You will be able to generate image manipulations and generate
-
 [Glide](http://glide.thephpleague.com/) is a easy on-demand image manipulation library written in PHP. It's part of the [League of Extraordinary Packages](http://thephpleague.com/).
+
+Using this package you'll be able to generate image manipulations on the fly and generate URL's to those images. These URL's will be signed so only you will be able to specify which manipulations should be generated. Every manipulation will be cached.
 
 ## Installation
 
