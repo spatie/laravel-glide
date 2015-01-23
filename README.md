@@ -38,11 +38,11 @@ This package also comes with a facade, which provides an easy way to generate im
 
 // Laravel 4: app/config/app.php
 
-'aliases' => array(
+'aliases' => [
 	...
-    'GlideImage'       => 'Spatie\Glide\GlideImageFacade',
+    'GlideImage' => 'Spatie\Glide\GlideImageFacade',
     ...
-)
+]
 ```
 
 
