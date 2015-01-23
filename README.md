@@ -110,5 +110,7 @@ Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/)
 ###Generating an image on the server first
 It's also possible to generate an image manipulation separately and store it wherever you want.
 ```php
-GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale'])->save($pathToWhereToSaveTheImage)
+GlideImage::setImagePath('kayaks.jpg')
+	->setConversionParameters(['w'=> 50, 'filt'=>'greyscale'])
+	->save($pathToWhereToSaveTheImage);
 ```
