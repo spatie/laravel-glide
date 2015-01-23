@@ -117,3 +117,6 @@ GlideImage::setImagePath('kayaks.jpg')
 ```
 
 Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
+
+## Notes
+For the moment Glide doesn't clean the cache directory, but that functionality [may be coming in a future release](https://github.com/thephpleague/glide/issues/7). Until then it's your job to keep an eye on it's total size. If it becomes too big, you can opt to delete the files inside it.
