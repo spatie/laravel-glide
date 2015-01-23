@@ -96,14 +96,14 @@ The options in the config file are set with sane default values and they should 
 
 ###Generating an image on the fly
 
-Assuming you've got an image named "kayaks.jpg" in "app/storage/images" (= the default input directory) you can use this code in a blade view:
+Assuming you've got an image named "kayaks.jpg" in ```app/storage/images``` (the  input directory specified in the config file) you can use this code in a blade view:
 
 
 ```php
 <img src="{{ GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
 
-The function will output an URL to a greyscale version of kayaks.jpg that has a width of 50 pixels. As soon as the URL gets hit by your browser, the image will be generated on the fly. The generated image will be saved in "app/storage/glide-cache" (= the default cache directory).
+The function will output an URL to a greyscale version of kayaks.jpg that has a width of 50 pixels. As soon as the URL gets hit by your browser, the image will be generated on the fly. The generated image will be saved in ```app/storage/glide-cache``` (= the cache directory specified in the input file).
 
 Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
 ###Generating an image directly on the server
