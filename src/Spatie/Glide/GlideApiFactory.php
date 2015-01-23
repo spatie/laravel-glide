@@ -1,6 +1,7 @@
 <?php
 namespace Spatie\Glide;
 
+use Illuminate\Support\Facades\Config;
 use Intervention\Image\ImageManager;
 use League\Glide\Api;
 use League\Glide\Manipulators\Blur;

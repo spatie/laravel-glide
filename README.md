@@ -8,6 +8,7 @@ This package provides a Service Provider that allows you to very easily integrat
 [Glide](http://glide.thephpleague.com/) is a easy on-demand image manipulation library written in PHP. It's part of the [League of Extraordinary Packages](http://thephpleague.com/).
 
 Using this package you'll be able to generate image manipulations on the fly and generate URL's to those images. These URL's will be signed so only you will be able to specify which manipulations should be generated. Every manipulation will be cached.
+It's also possible to generate an image manipulation separately and store it wherever you want.
 
 ## Installation
 
@@ -107,7 +108,7 @@ The function will output an URL to a greyscale version of kayaks.jpg that has a 
 
 Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
 ###Generating an image on the server first
-There is also a method to generate the image seperatly. 
+It's also possible to generate an image manipulation separately and store it wherever you want.
 ```php
 GlideImage::setImagePath('kayaks.jpg')->setConversionParameters(['w'=> 50, 'filt'=>'greyscale'])->save($pathToWhereToSaveTheImage)
 ```

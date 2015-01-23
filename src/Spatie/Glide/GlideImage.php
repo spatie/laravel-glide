@@ -1,6 +1,8 @@
 <?php
 namespace Spatie\Glide;
+use Illuminate\Support\Facades\Config;
 use League\Glide\Factories\UrlBuilder;
+use Symfony\Component\HttpFoundation\Request;
 
 class GlideImage
 {
