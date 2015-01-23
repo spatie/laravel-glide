@@ -57,8 +57,7 @@ The config file looks like this:
 
 return [
     /*
-     * The adapter and parameters that Glide will use as input
-     * You should put your original images in this directory
+     * Glide will search for images in this directory
      *
      */
     'source' => [
@@ -66,7 +65,7 @@ return [
     ],
 
     /*
-     * The adapter and parameters that Glide will use for caching images
+     * The directory Glide will use to store it's cache
      * A .gitignore file will be automatically placed in this directory
      * so you don't accidentally end up committing these images
      *
