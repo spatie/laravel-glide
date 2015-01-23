@@ -2,20 +2,13 @@
 
 return [
     /*
-     * URLs to generated images will start with this string
-     *
-     */
-    'baseURL' => 'img',
-
-    /*
      * The adapter and parameters that Glide will use as input
      * You should put your original images in this directory
      *
      */
     'source' => [
-            'adapter' => 'local',
-            'path' => storage_path('images'),
-        ],
+        'path' => storage_path('images'),
+    ],
 
     /*
      * The adapter and parameters that Glide will use for caching images
@@ -24,9 +17,14 @@ return [
      *
      */
     'cache' => [
-            'adapter' => 'local',
-            'path' => storage_path('glide-cache'),
-        ],
+        'path' => storage_path('glide-cache'),
+    ],
+
+    /*
+     * URLs to generated images will start with this string
+     *
+     */
+    'baseURL' => 'img',
 
     /*
      * The maximum allowed total image size in pixels

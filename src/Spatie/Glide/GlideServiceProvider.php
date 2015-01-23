@@ -1,22 +1,9 @@
 <?php namespace Spatie\Glide;
 
 use Illuminate\Support\ServiceProvider;
-use Intervention\Image\ImageManager;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use League\Glide\Api;
 use League\Glide\Factories\HttpSignature;
-use League\Glide\Manipulators\Blur;
-use League\Glide\Manipulators\Brightness;
-use League\Glide\Manipulators\Contrast;
-use League\Glide\Manipulators\Filter;
-use League\Glide\Manipulators\Gamma;
-use League\Glide\Manipulators\Orientation;
-use League\Glide\Manipulators\Output;
-use League\Glide\Manipulators\Pixelate;
-use League\Glide\Manipulators\Rectangle;
-use League\Glide\Manipulators\Sharpen;
-use League\Glide\Manipulators\Size;
 use League\Glide\Server;
 
 class GlideServiceProvider extends ServiceProvider
@@ -38,9 +25,9 @@ class GlideServiceProvider extends ServiceProvider
     {
         $this->package('spatie/laravel-glide');
 
-        $this->app['config']->get('laravel-glide');
+        $glideConfig = $this->app['config']->get('laravel-glide');
 
-        $this->app['router']->get($this->app['config']->get('laravel-glide::config.baseURL').'/{all}', function () {
+        $this->app['router']->get($glideConfig['baseURL'].'/{all}', function () use ($glideConfig) {
 
             $request = $this->app['request'];
 
@@ -48,40 +35,21 @@ class GlideServiceProvider extends ServiceProvider
 
             // Set image source
             $source = new Filesystem(
-                new Local($this->app['config']->get('laravel-glide::config.source.path'))
+                new Local($glideConfig['source']['path'])
             );
 
             // Set image cache
             $cache = new Filesystem(
-                new Local($this->app['config']->get('laravel-glide::config.cache.path'))
+                new Local($glideConfig['cache']['path'])
             );
-            $this->writeIgnoreFile($this->app['config']->get('laravel-glide::config.cache.path'));
+            $this->writeIgnoreFile($glideConfig['cache']['path']);
 
-            // Set image manager
-            $imageManager = new ImageManager();
-
-            // Set manipulators
-            $manipulators = [
-                new Orientation(),
-                new Rectangle(),
-                new Size($this->app['config']->get('laravel-glide::config.maxSize')),
-                new Brightness(),
-                new Contrast(),
-                new Gamma(),
-                new Sharpen(),
-                new Filter(),
-                new Blur(),
-                new Pixelate(),
-                new Output(),
-            ];
-
-            // Set API
-            $api = new Api($imageManager, $manipulators);
+            $api = GlideApiFactory::create();
 
             // Setup Glide server
             $server = new Server($source, $cache, $api, $this->app['config']->get('app.key'));
 
-            $server->setBaseUrl($this->app['config']->get('laravel-glide::config.baseURL'));
+            $server->setBaseUrl($glideConfig['baseURL']);
 
             echo $server->outputImage($request);
 

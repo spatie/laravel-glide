@@ -1,6 +1,5 @@
 <?php
 namespace Spatie\Glide;
-
 use League\Glide\Factories\UrlBuilder;
 
 class GlideImage
@@ -78,6 +77,20 @@ class GlideImage
     }
 
     /**
+     * Save the image to the given outputFile
+     *
+     * @param $outputFile
+     */
+    public function saveImage($outputFile)
+    {
+        $glideApi = GlideApiFactory::create();
+
+        $imageData = $glideApi->run(Request::create(null, $this->conversionParameters), file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath));
+
+        file_put_contents($outputFile, $imageData);
+    }
+
+    /**
      * The string representation of this object is the URL to the image
      *
      * @return string
@@ -86,4 +99,5 @@ class GlideImage
     {
         return $this->getUrl();
     }
+
 }
