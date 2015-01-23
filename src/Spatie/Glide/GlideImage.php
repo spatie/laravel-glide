@@ -87,9 +87,11 @@ class GlideImage
     {
         $glideApi = GlideApiFactory::create();
 
-        $imageData = $glideApi->run(Request::create(null, $this->conversionParameters), file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath));
+        $inputImageData = file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath);
 
-        file_put_contents($outputFile, $imageData);
+        $outputImageData = $glideApi->run(Request::create(null,null, $this->conversionParameters), $inputImageData);
+
+        file_put_contents($outputFile, $outputImageData);
     }
 
     /**

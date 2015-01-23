@@ -25,7 +25,7 @@ class GlideServiceProvider extends ServiceProvider
     {
         $this->package('spatie/laravel-glide');
 
-        $glideConfig = $this->app['config']->get('laravel-glide');
+        $glideConfig = $this->app['config']->get('laravel-glide::config');
 
         $this->app['router']->get($glideConfig['baseURL'].'/{all}', function () use ($glideConfig) {
 
