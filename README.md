@@ -8,6 +8,7 @@ This package provides a Service Provider that allows you to very easily integrat
 [Glide](http://glide.thephpleague.com/) is a easy on-demand image manipulation library written in PHP. It's part of the [League of Extraordinary Packages](http://thephpleague.com/).
 
 Using this package you'll be able to generate image manipulations on the fly and generate URL's to those images. These URL's will be signed so only you will be able to specify which manipulations should be generated. Every manipulation will be cached.
+
 It's also possible to generate an image manipulation separately and store it wherever you want.
 
 ## Installation
@@ -131,3 +132,4 @@ Currently this package only supports images stored on the local filesystem. Glid
 ## License
 
 The MIT License (MIT). Please see [LICENSE](https://github.com/freekmurze/laravel-glide/blob/master/LICENSE) for more information.
+
