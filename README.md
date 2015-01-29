@@ -1,5 +1,6 @@
 # A Glide Server Provider for Laravel
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d/mini.png)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/freekmurze/laravel-glide/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/freekmurze/laravel-glide/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/spatie/laravel-glide/version.png)](https://packagist.org/packages/spatie/laravel-glide)
 [![License](https://poser.pugx.org/spatie/laravel-glide/license.png)](https://packagist.org/packages/spatie/laravel-glide)
 
