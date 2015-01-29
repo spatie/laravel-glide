@@ -1,7 +1,8 @@
 <?php
 namespace Spatie\Glide;
+
 use Illuminate\Support\Facades\Config;
-use League\Glide\Factories\UrlBuilder;
+use League\Glide\Http\UrlBuilderFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 class GlideImage
@@ -73,7 +74,7 @@ class GlideImage
      */
     public function getURL()
     {
-        $urlBuilder = UrlBuilder::create('img', $this->signKey);
+        $urlBuilder = UrlBuilderFactory::create('img', $this->signKey);
 
         return $urlBuilder->getUrl($this->imagePath, $this->conversionParameters);
     }
@@ -89,7 +90,7 @@ class GlideImage
 
         $inputImageData = file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath);
 
-        $outputImageData = $glideApi->run(Request::create(null,null, $this->conversionParameters), $inputImageData);
+        $outputImageData = $glideApi->run(Request::create(null, null, $this->conversionParameters), $inputImageData);
 
         file_put_contents($outputFile, $outputImageData);
     }
@@ -103,5 +104,4 @@ class GlideImage
     {
         return $this->getUrl();
     }
-
 }

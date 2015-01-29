@@ -3,7 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use League\Glide\Factories\HttpSignature;
+use League\Glide\Http\SignatureFactory;
 use League\Glide\Server;
 
 class GlideServiceProvider extends ServiceProvider
@@ -31,7 +31,7 @@ class GlideServiceProvider extends ServiceProvider
 
             $request = $this->app['request'];
 
-            HttpSignature::create($this->app['config']->get('app.key'))->validateRequest($request);
+            SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
 
             // Set image source
             $source = new Filesystem(
@@ -47,7 +47,7 @@ class GlideServiceProvider extends ServiceProvider
             $api = GlideApiFactory::create();
 
             // Setup Glide server
-            $server = new Server($source, $cache, $api, $this->app['config']->get('app.key'));
+            $server = new Server($source, $cache, $api);
 
             $server->setBaseUrl($glideConfig['baseURL']);
 

@@ -122,3 +122,12 @@ Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/)
 For the moment Glide doesn't clean the cache directory, but that functionality [may be coming in a future release](https://github.com/thephpleague/glide/issues/7). Until then it's your job to keep an eye on it's total size. If it becomes too big, you can opt to delete the files inside it.
 ### Other filesystems
 Currently this package only supports images stored on the local filesystem. Glide itself leverages [Flysystem](https://github.com/thephpleague/flysystem) to read and write to various filesystems. I'd like support for that in this package let me know or feel free to submit a pull request.
+
+## Credits
+
+- [Freek Van der Herten](https:/murze.be)
+- [All Contributors](https://github.com/freekmurze/laravel-glide/contributors)
+
+## License
+
+The MIT License (MIT). Please see [LICENSE](https://github.com/freekmurze/laravel-glide/blob/master/LICENSE) for more information.
