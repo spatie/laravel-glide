@@ -1,6 +1,7 @@
 <?php
 namespace Spatie\Glide;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use League\Glide\Http\UrlBuilderFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,17 +14,20 @@ class GlideImage
 
     protected $baseURL;
 
-    protected $conversionParameters;
+    protected $modificationParameters = [];
 
     /**
      * Set the path to the image that needs to be converted
      *
      * @param $imagePath
+     * @param array $modificationParameters = []
      * @return $this
      */
-    public function setImagePath($imagePath)
+    public function load($imagePath, $modificationParameters = [])
     {
         $this->imagePath = $imagePath;
+
+        $this->modify($modificationParameters);
 
         return $this;
     }
@@ -55,17 +59,20 @@ class GlideImage
     }
 
     /**
-     * Set the conversion parameters
+     * Set the modification parameters
      *
-     * @param  mixed $conversionParameters
+     * @param array $modificationParameters
      * @return $this
      */
-    public function setConversionParameters($conversionParameters)
+    public function modify($modificationParameters)
     {
-        $this->conversionParameters = $conversionParameters;
+        $modificationParameters = $this->convertParametersToString($modificationParameters);
+
+        $this->modificationParameters = $modificationParameters;
 
         return $this;
     }
+
 
     /**
      * Generate the url
@@ -76,23 +83,26 @@ class GlideImage
     {
         $urlBuilder = UrlBuilderFactory::create('img', $this->signKey);
 
-        return $urlBuilder->getUrl($this->imagePath, $this->conversionParameters);
+        return $urlBuilder->getUrl($this->imagePath, $this->modificationParameters);
     }
 
     /**
      * Save the image to the given outputFile
      *
      * @param $outputFile
+     * @return string the URL to the saved image
      */
-    public function saveImage($outputFile)
+    public function save($outputFile)
     {
         $glideApi = GlideApiFactory::create();
 
         $inputImageData = file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath);
 
-        $outputImageData = $glideApi->run(Request::create(null, null, $this->conversionParameters), $inputImageData);
+        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $inputImageData);
 
         file_put_contents($outputFile, $outputImageData);
+
+        return $this->getURL();
     }
 
     /**
@@ -103,5 +113,20 @@ class GlideImage
     public function __toString()
     {
         return $this->getUrl();
+    }
+
+    /**
+     * Cast 'w' & 'h' modificationParameters to string to fix the ctype_digit issue.
+     *
+     * @param array $modificationParameters
+     * @return array $modificationParameters
+     */
+    public function convertParametersToString($modificationParameters)
+    {
+        return array_map(function($value) {
+            return  (string)$value;
+
+        },$modificationParameters);
+
     }
 }
