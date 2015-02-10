@@ -123,7 +123,7 @@ class GlideImage
      */
     public function convertParametersToString($modificationParameters)
     {
-        return array_map(function($value, $key) {
+        return array_map(function($value) {
             return  (string)$value;
 
         },$modificationParameters);
