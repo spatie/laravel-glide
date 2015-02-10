@@ -102,7 +102,7 @@ Assuming you've got an image named "kayaks.jpg" in ```app/storage/images``` (the
 ```php
 <img src="{{ GlideImage::load('kayaks.jpg')-modify(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
-The arguments for *modify* can also be used as a second (optional) argument for *load* which would look like:
+The arguments for ```modify``` can also be used as a second (optional) argument for ```load``` which would look like:
 
 ```php
 <img src="{{ GlideImage::load('kayaks.jpg', ['w'=> 50, 'filt'=>'greyscale']) }}" />
@@ -110,7 +110,7 @@ The arguments for *modify* can also be used as a second (optional) argument for 
 
 The function will output a signed URL to a greyscale version of kayaks.jpg that has a width of 50 pixels. As soon as the URL gets hit by your browser, the image will be generated on the fly. The generated image will be saved in ```app/storage/glide-cache``` (= the cache directory specified in the input file).
 
-Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
+Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```modify```-method.
 
 ###Generating an image directly on the server
 It's also possible to generate an image manipulation separately and store it wherever you want.
@@ -122,7 +122,7 @@ GlideImage::load('kayaks.jpg')
 	->save($pathToWhereToSaveTheImage);
 ```
 
-Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```setConversionParameters```-method.
+Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```modify```-method.
 
 ## Notes
 ### Cleaning the cache
