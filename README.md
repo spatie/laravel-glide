@@ -1,4 +1,6 @@
 # A Glide Server Provider for Laravel
+https://img.shields.io/travis/freekmurze/laravel-glide.svg
+[![Build status](https://img.shields.io/travis/freekmurze/laravel-glide.svg)](https://travis-ci.org/freekmurze/laravel-glide)
 [![Latest Version](https://img.shields.io/github/release/freekmurze/laravel-glide.svg?style=flat-square)](https://github.com/freekmurze/laravel-glide/releases)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ad0422ca-e31f-44a3-b01a-ee5ec757b18d.svg)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
 [![Quality Score](https://img.shields.io/scrutinizer/g/freekmurze/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/freekmurze/laravel-glide)
