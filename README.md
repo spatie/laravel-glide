@@ -102,7 +102,7 @@ Assuming you've got an image named "kayaks.jpg" in ```app/storage/images``` (the
 ```php
 <img src="{{ GlideImage::load('kayaks.jpg')-modify(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
-The arguments for ```modify``` can also be used as a second (optional) argument for ```load``` which would look like:
+The arguments for ```modify``` can also be used as a second (optional) argument for ```load```:
 
 ```php
 <img src="{{ GlideImage::load('kayaks.jpg', ['w'=> 50, 'filt'=>'greyscale']) }}" />
