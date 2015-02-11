@@ -100,7 +100,7 @@ The options in the config file are set with sane default values and they should 
 Assuming you've got an image named "kayaks.jpg" in ```app/storage/images``` (the  input directory specified in the config file) you can use this code in a blade view:
 
 ```php
-<img src="{{ GlideImage::load('kayaks.jpg')-modify(['w'=> 50, 'filt'=>'greyscale']) }}" />
+<img src="{{ GlideImage::load('kayaks.jpg')->modify(['w'=> 50, 'filt'=>'greyscale']) }}" />
 ```
 The arguments for ```modify``` can also be used as a second (optional) argument for ```load```:
 
