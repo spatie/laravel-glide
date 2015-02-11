@@ -83,7 +83,7 @@ class GlideImage
     {
         $urlBuilder = UrlBuilderFactory::create('img', $this->signKey);
 
-        return $urlBuilder->getUrl($this->imagePath, $this->modificationParameters);
+        return $urlBuilder->getUrl(rawurlencode($this->imagePath), $this->modificationParameters);
     }
 
     /**
