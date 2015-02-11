@@ -12,6 +12,17 @@ Using this package you'll be able to generate image manipulations on the fly and
 
 It's also possible to generate an image manipulation separately and store it wherever you want.
 
+## Laravel compatibility
+
+!! Version 5 will be stable after laravel 5 is released
+
+ Laravel  | laravel-glide
+:---------|:----------
+ 4.2.x    | 1.x
+ 5.x      | 2.x
+
+Version 2.x with Laravel 5 will be released february 2012.
+
 ## Installation
 
 
