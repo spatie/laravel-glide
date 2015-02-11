@@ -14,8 +14,6 @@ It's also possible to generate an image manipulation separately and store it whe
 
 ## Laravel compatibility
 
-!! Version 5 will be stable after laravel 5 is released
-
  Laravel  | laravel-glide
 :---------|:----------
  4.2.x    | 1.x
