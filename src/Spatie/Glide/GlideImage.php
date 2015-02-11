@@ -1,7 +1,6 @@
 <?php
 namespace Spatie\Glide;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use League\Glide\Http\UrlBuilderFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -126,7 +125,7 @@ class GlideImage
         return array_map(function($value) {
             return  (string)$value;
 
-        },$modificationParameters);
+        }, $modificationParameters);
 
     }
 }
