@@ -108,7 +108,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
 
         $glide->load('tests/_data/testFile.jpg', ['filt' => 'greyscale']);
 
-        $glide->save('tests/_data/savedFile.jpg');
+        $glide->save('tests/_output/savedFile.jpg');
 
         $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
 
