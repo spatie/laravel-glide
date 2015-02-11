@@ -13,6 +13,9 @@
         "illuminate/support": "4.2.*|5.*",
         "league/glide": "~0.3"
     },
+    "require-dev": {
+        "codeception/codeception": "2.*"
+    },
     "autoload": {
         "psr-0": {
             "Spatie\\Glide": "src/"
