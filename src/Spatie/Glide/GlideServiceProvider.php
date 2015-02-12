@@ -23,9 +23,11 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('spatie/laravel-glide');
+        $this->publishes([
+            __DIR__.'/../../config/laravel-glide.php' => config_path('laravel-glide.php'),
+        ], 'config');
 
-        $glideConfig = $this->app['config']->get('laravel-glide::config');
+        $glideConfig = config('laravel-glide');
 
         $this->app['router']->get($glideConfig['baseURL'].'/{all}', function () use ($glideConfig) {
 
@@ -63,11 +65,14 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('laravel-glide-image', function () {
+
+       $this->app->bind('laravel-glide-image', function () {
+
+
             $glideImage = new GlideImage();
             $glideImage
                 ->setSignKey($this->app['config']->get('app.key'))
-                ->setBaseURL($this->app['config']->get('laravel-glide::config.baseURL'));
+                ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;
         });
