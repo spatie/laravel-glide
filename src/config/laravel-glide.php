@@ -16,7 +16,7 @@ return [
      *
      */
     'cache' => [
-        'path' => storage_path('glide-cache'),
+        'path' => storage_path('glide/cache'),
     ],
 
     /*
