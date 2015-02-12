@@ -23,8 +23,6 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //$glideConfig = $this->app['config']->get('laravel-glide::config');
-
         $this->publishes([
             __DIR__.'/../../config/laravel-glide.php' => config_path('laravel-glide.php'),
         ], 'config');
