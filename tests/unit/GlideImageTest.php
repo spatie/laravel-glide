@@ -80,10 +80,10 @@ class GlideImageTest extends \Codeception\TestCase\Test
         $glide = $this->_before();
 
         $glide->load('testFile.jpg', ['filt' => 'greyscale']);
-
+        
         $glide->getURL();
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->getURL());
     }
@@ -95,7 +95,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
 
         $glide->load('testFile.jpg', ['filt' => 'greyscale']);
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->__toString());
     }
