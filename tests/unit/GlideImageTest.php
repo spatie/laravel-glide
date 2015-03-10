@@ -83,7 +83,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
 
         $glide->getURL();
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->getURL());
     }
@@ -95,23 +95,8 @@ class GlideImageTest extends \Codeception\TestCase\Test
 
         $glide->load('testFile.jpg', ['filt' => 'greyscale']);
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->__toString());
     }
-
-    /*public function testSaveMethod()
-    {
-        // --- Laravel Config doesn't load --- //
-
-        $glide = $this->_before();
-
-        $glide->load('tests/_data/testFile.jpg', ['filt' => 'greyscale']);
-
-        $glide->save('tests/_output/savedFile.jpg');
-
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
-
-        //$this->assertEquals($expectedUrl, $glide->save('tests/_data/savedFile.jpg'));
-    }*/
 }
