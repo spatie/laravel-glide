@@ -33,7 +33,10 @@ class GlideServiceProvider extends ServiceProvider
 
             $request = $this->app['request'];
 
-            SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
+            // Validate the signature
+            if($glideConfig['secureURLs'] == true) {
+                SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
+            }
 
             // Set image source
             $source = new Filesystem(
@@ -66,12 +69,14 @@ class GlideServiceProvider extends ServiceProvider
     public function register()
     {
 
+       $glideConfig = config('laravel-glide');
+
        $this->app->bind('laravel-glide-image', function () {
 
 
             $glideImage = new GlideImage();
             $glideImage
-                ->setSignKey($this->app['config']->get('app.key'))
+                ->setSignKey(($glideConfig['secureURLs'] == true ? $this->app['config']->get('app.key') : null))
                 ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;
