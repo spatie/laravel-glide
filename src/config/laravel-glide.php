@@ -31,8 +31,9 @@ return [
     'maxSize' => 2000 * 2000,
 
     /*
-     * Glide has an extra feature to sign each generated URL with
-     * a private key to avoid possibility to alter the URL manually
+     * Glide has a feature to sign each generated URL with
+     * a key to avoid the visitors of your site to alter the URL
+     * manually
      */
-    'secureURLs' => true
+    'useSecureURLs' => true
 ];

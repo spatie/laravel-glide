@@ -34,7 +34,7 @@ class GlideServiceProvider extends ServiceProvider
             $request = $this->app['request'];
 
             // Validate the signature
-            if($glideConfig['secureURLs'] == true) {
+            if($glideConfig['useSecureURLs'] == true) {
                 SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
             }
 
@@ -68,15 +68,13 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-       $glideConfig = config('laravel-glide');
-
        $this->app->bind('laravel-glide-image', function () {
 
+            $glideConfig = config('laravel-glide');
 
             $glideImage = new GlideImage();
             $glideImage
-                ->setSignKey(($glideConfig['secureURLs'] == true ? $this->app['config']->get('app.key') : null))
+                ->setSignKey($this->getSignKey($glideConfig))
                 ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;
@@ -105,5 +103,20 @@ class GlideServiceProvider extends ServiceProvider
         if (!file_exists($destinationFile)) {
             $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
         }
+    }
+
+    public function getSignKey($glideConfig)
+    {
+        if(isset($glideConfig['useSecureURLs']))
+        {
+            $glideConfig['useSecureURLs'] = true;
+        }
+
+        if($glideConfig['useSecureURls'] == true)
+        {
+            return $this->app['config']->get('app.key');
+        }
+
+        return null;
     }
 }
