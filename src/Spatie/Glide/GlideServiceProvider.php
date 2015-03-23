@@ -113,7 +113,12 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function getSignKey($glideConfig)
     {
-        if(!isset($glideConfig['useSecureURLs']) || $glideConfig['useSecureURLs'] == true)
+        if(! isset($glideConfig['useSecureURLs']))
+        {
+            return Config::get('app.key');
+        }
+
+        if ($glideConfig['useSecureURLs'] == true)
         {
             return Config::get('app.key');
         }

@@ -32,16 +32,14 @@ class SignKeyTest extends \Codeception\TestCase\Test
     /**
      * Test if a SignKey is returned when useSecureURLs is not defined
      */
-    public function testNoSecureURL()
+    public function testSecureURLSettingNotDefined()
     {
         $expectedResult = 'my-key';
-
-        $glideConfig['useSecureURLs'] = null;
 
         Config::shouldReceive('get')->with('app.key')->andReturn($expectedResult);
 
         $result = $this->serviceProvider
-            ->getSignKey($glideConfig);
+            ->getSignKey([]);
 
         $this->assertEquals($expectedResult, $result);
     }

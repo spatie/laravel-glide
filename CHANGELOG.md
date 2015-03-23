@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.1.0
+- Added an option to disable the signing of urls
+
 ## 2.0.2
 - Prevent slashes from being encoded in a generated url
 
