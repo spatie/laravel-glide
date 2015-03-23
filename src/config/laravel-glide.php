@@ -28,5 +28,12 @@ return [
     /*
      * The maximum allowed total image size in pixels
      */
-    'maxSize' => 2000 * 2000
+    'maxSize' => 2000 * 2000,
+
+    /*
+     * Glide has a feature to sign each generated URL with
+     * a key to avoid the visitors of your site to alter the URL
+     * manually
+     */
+    'useSecureURLs' => true,
 ];
