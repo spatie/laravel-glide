@@ -1,10 +1,12 @@
 <?php namespace Spatie\Glide;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Http\SignatureFactory;
 use League\Glide\Server;
+
 
 class GlideServiceProvider extends ServiceProvider
 {
@@ -70,11 +72,9 @@ class GlideServiceProvider extends ServiceProvider
     {
        $this->app->bind('laravel-glide-image', function () {
 
-            $glideConfig = config('laravel-glide');
-
             $glideImage = new GlideImage();
             $glideImage
-                ->setSignKey($this->getSignKey($glideConfig))
+                ->setSignKey($this->getSignKey($this->app['config']->get('laravel.glide')))
                 ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;
@@ -105,16 +105,17 @@ class GlideServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Check the configuration to return the correct signKey
+     *
+     * @param $glideConfig
+     * @return null
+     */
     public function getSignKey($glideConfig)
     {
-        if(isset($glideConfig['useSecureURLs']))
+        if(!isset($glideConfig['useSecureURLs']) || $glideConfig['useSecureURLs'] == true)
         {
-            $glideConfig['useSecureURLs'] = true;
-        }
-
-        if($glideConfig['useSecureURls'] == true)
-        {
-            return $this->app['config']->get('app.key');
+            return Config::get('app.key');
         }
 
         return null;
