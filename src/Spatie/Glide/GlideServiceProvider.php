@@ -1,10 +1,12 @@
 <?php namespace Spatie\Glide;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Http\SignatureFactory;
 use League\Glide\Server;
+
 
 class GlideServiceProvider extends ServiceProvider
 {
@@ -34,7 +36,7 @@ class GlideServiceProvider extends ServiceProvider
             $request = $this->app['request'];
 
             // Validate the signature
-            if($glideConfig['secureURLs'] == true) {
+            if($glideConfig['useSecureURLs'] == true) {
                 SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
             }
 
@@ -68,15 +70,11 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-       $glideConfig = config('laravel-glide');
-
        $this->app->bind('laravel-glide-image', function () {
-
 
             $glideImage = new GlideImage();
             $glideImage
-                ->setSignKey(($glideConfig['secureURLs'] == true ? $this->app['config']->get('app.key') : null))
+                ->setSignKey($this->getSignKey($this->app['config']->get('laravel.glide')))
                 ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;
@@ -105,5 +103,21 @@ class GlideServiceProvider extends ServiceProvider
         if (!file_exists($destinationFile)) {
             $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
         }
+    }
+
+    /**
+     * Check the configuration to return the correct signKey
+     *
+     * @param $glideConfig
+     * @return null
+     */
+    public function getSignKey($glideConfig)
+    {
+        if(!isset($glideConfig['useSecureURLs']) || $glideConfig['useSecureURLs'] == true)
+        {
+            return Config::get('app.key');
+        }
+
+        return null;
     }
 }
