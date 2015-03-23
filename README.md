@@ -1,8 +1,10 @@
 # A Glide Server Provider for Laravel
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d/mini.png)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/freekmurze/laravel-glide/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/freekmurze/laravel-glide/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/spatie/laravel-glide/version.png)](https://packagist.org/packages/spatie/laravel-glide)
-[![License](https://poser.pugx.org/spatie/laravel-glide/license.png)](https://packagist.org/packages/spatie/laravel-glide)
+[![Build status](https://img.shields.io/travis/freekmurze/laravel-glide.svg)](https://travis-ci.org/freekmurze/laravel-glide)
+[![Latest Version](https://img.shields.io/github/release/freekmurze/laravel-glide.svg?style=flat-square)](https://github.com/freekmurze/laravel-glide/releases)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ad0422ca-e31f-44a3-b01a-ee5ec757b18d.svg)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
+[![Quality Score](https://img.shields.io/scrutinizer/g/freekmurze/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/freekmurze/laravel-glide)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-glide.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-glide)
 
 This package provides a Service Provider that allows you to very easily integrate [Glide](http://glide.thephpleague.com/) into a Laravel project.
 
@@ -11,6 +13,14 @@ This package provides a Service Provider that allows you to very easily integrat
 Using this package you'll be able to generate image manipulations on the fly and generate URL's to those images. These URL's will be signed so only you will be able to specify which manipulations should be generated. Every manipulation will be cached.
 
 It's also possible to generate an image manipulation separately and store it wherever you want.
+
+## Laravel compatibility
+
+ Laravel  | laravel-glide
+:---------|:----------
+ 4.2.x    | 1.x
+ 5.x      | 2.x
+
 
 ## Installation
 
@@ -51,7 +61,7 @@ This package also comes with a facade, which provides an easy way to generate im
 You can publish the config file of the package using artisan.
 
 ```bash
-php artisan vendor:publish
+php artisan vendor:publish --provider="Spatie\Glide\GlideServiceProvider"
 ```
 
 The config file looks like this:
@@ -73,7 +83,7 @@ return [
      *
      */
     'cache' => [
-        'path' => storage_path('glide-cache'),
+        'path' => storage_path('glide/cache'),
     ],
 
     /*
