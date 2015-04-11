@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.0
+- Add support for Laravel 5's route caching
+
 ## 2.1.0
 - Added an option to disable the signing of urls
 
