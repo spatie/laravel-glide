@@ -101,7 +101,7 @@ class GlideImageController extends Controller {
         $destinationFile = $this->glideConfig['cache']['path'].'/.gitignore';
 
         if (!file_exists($destinationFile)) {
-            $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
+            $this->app['files']->copy(__DIR__.'/../../../stubs/gitignore.txt', $destinationFile);
         }
     }
 }
