@@ -98,10 +98,20 @@ class GlideImageController extends Controller {
      */
     public function writeIgnoreFile()
     {
+        $this->createCacheFolder();
+
         $destinationFile = $this->glideConfig['cache']['path'].'/.gitignore';
 
         if (!file_exists($destinationFile)) {
-            $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
+            $this->app['files']->copy(__DIR__.'/../../../stubs/gitignore.txt', $destinationFile);
+        }
+    }
+
+    private function createCacheFolder()
+    {
+        if( ! is_dir($this->glideConfig['cache']['path']))
+        {
+            mkdir($this->glideConfig['cache']['path'], 0777, true);
         }
     }
 }
