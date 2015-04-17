@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.1
+- Fixed an issue where the controller would not work when the default namespace is not "App"
+
 ## 2.2.0
 - Add support for Laravel 5's route caching
 
