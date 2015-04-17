@@ -1,6 +1,6 @@
 <?php namespace Spatie\Glide\Controller;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Http\SignatureFactory;
