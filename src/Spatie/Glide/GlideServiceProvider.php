@@ -86,7 +86,7 @@ class GlideServiceProvider extends ServiceProvider
             return Config::get('app.key');
         }
 
-        if ($glideConfig['useSecureURLs'] == true)
+        if ($glideConfig['useSecureURLs'] === true)
         {
             return Config::get('app.key');
         }
