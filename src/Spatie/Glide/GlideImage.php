@@ -130,9 +130,16 @@ class GlideImage
 
     }
 
+    /**
+     * Use an absolute path to the sourceFile (instead of using config source)
+     *
+     * @return $this
+     */
     public function useAbsoluteSourceFilePath()
     {
         $this->useAbsolutePath = true;
+
+        return $this;
     }
 
     /**
