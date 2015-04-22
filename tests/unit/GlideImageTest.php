@@ -27,11 +27,11 @@ class GlideImageTest extends \Codeception\TestCase\Test
     {
         $glide = $this->_before();
 
-        $imagePath = 'testFile.jpg';
+        $sourceFile = 'testFile.jpg';
 
-        $glide->load($imagePath);
+        $glide->load($sourceFile);
 
-        $this->assertAttributeContains('testFile.jpg', 'imagePath', $glide);
+        $this->assertAttributeContains('testFile.jpg', 'sourceFile', $glide);
     }
 
     public function testBaseURL()
