@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GlideImage
 {
-    protected $imagePath;
+    protected $sourceFile;
 
     protected $signKey;
 
@@ -15,16 +15,18 @@ class GlideImage
 
     protected $modificationParameters = [];
 
+    protected $useAbsolutePath = false;
+
     /**
      * Set the path to the image that needs to be converted
      *
-     * @param $imagePath
+     * @param $sourceFile
      * @param array $modificationParameters = []
      * @return $this
      */
-    public function load($imagePath, $modificationParameters = [])
+    public function load($sourceFile, $modificationParameters = [])
     {
-        $this->imagePath = $imagePath;
+        $this->sourceFile = $sourceFile;
 
         $this->modify($modificationParameters);
 
@@ -82,7 +84,7 @@ class GlideImage
     {
         $urlBuilder = UrlBuilderFactory::create($this->baseURL, $this->signKey);
         
-        $encodedPath = implode('/', array_map('rawurlencode', explode('/', $this->imagePath)));
+        $encodedPath = implode('/', array_map('rawurlencode', explode('/', $this->sourceFile)));
         return $urlBuilder->getUrl($encodedPath, $this->modificationParameters);
     }
 
@@ -96,9 +98,7 @@ class GlideImage
     {
         $glideApi = GlideApiFactory::create();
 
-        $inputImageData = file_get_contents(Config::get('laravel-glide.source.path').'/'.$this->imagePath);
-
-        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $inputImageData);
+        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $this->getPathToImage());
 
         file_put_contents($outputFile, $outputImageData);
 
@@ -128,5 +128,25 @@ class GlideImage
 
         }, $modificationParameters);
 
+    }
+
+    public function useAbsoluteSourceFilePath()
+    {
+        $this->useAbsolutePath = true;
+    }
+
+    /**
+     * Get the path to the image
+     *
+     * @return string
+     */
+    private function getPathToImage()
+    {
+        if( $this->useAbsolutePath)
+        {
+            return file_get_contents($this->sourceFile);
+        }
+
+        return file_get_contents(Config::get('laravel-glide.source.path').'/'.$this->sourceFile);
     }
 }
