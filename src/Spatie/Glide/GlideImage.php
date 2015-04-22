@@ -98,7 +98,7 @@ class GlideImage
     {
         $glideApi = GlideApiFactory::create();
 
-        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $this->getPathToImage());
+        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), file_get_contents($this->getPathToImage()));
 
         file_put_contents($outputFile, $outputImageData);
 
@@ -151,9 +151,9 @@ class GlideImage
     {
         if( $this->useAbsolutePath)
         {
-            return file_get_contents($this->sourceFile);
+            return $this->sourceFile;
         }
 
-        return file_get_contents(Config::get('laravel-glide.source.path').'/'.$this->sourceFile);
+        return Config::get('laravel-glide.source.path').'/'.$this->sourceFile;
     }
 }
