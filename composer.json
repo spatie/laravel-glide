@@ -1,7 +1,7 @@
 {
     "name": "spatie/laravel-glide",
     "description": "A Glide Service Provider for Laravel",
-    "homepage": "https://github.com/spatie/laravel-glide"
+    "homepage": "https://github.com/spatie/laravel-glide",
     "license": "MIT",
     "authors": [
         {
