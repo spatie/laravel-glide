@@ -1,8 +1,8 @@
 # A Glide Server Provider for Laravel
-[![Build status](https://img.shields.io/travis/freekmurze/laravel-glide.svg)](https://travis-ci.org/freekmurze/laravel-glide)
-[![Latest Version](https://img.shields.io/github/release/freekmurze/laravel-glide.svg?style=flat-square)](https://github.com/freekmurze/laravel-glide/releases)
+[![Build status](https://img.shields.io/travis/spatie/laravel-glide.svg)](https://travis-ci.org/spatie/laravel-glide)
+[![Latest Version](https://img.shields.io/github/release/spatie/laravel-glide.svg?style=flat-square)](https://github.com/spatie/laravel-glide/releases)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ad0422ca-e31f-44a3-b01a-ee5ec757b18d.svg)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
-[![Quality Score](https://img.shields.io/scrutinizer/g/freekmurze/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/freekmurze/laravel-glide)
+[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-glide)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-glide.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-glide)
 
