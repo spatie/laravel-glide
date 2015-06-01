@@ -1,6 +1,6 @@
 # A Glide Server Provider for Laravel
-[![Build status](https://img.shields.io/travis/spatie/laravel-glide.svg)](https://travis-ci.org/spatie/laravel-glide)
 [![Latest Version](https://img.shields.io/github/release/spatie/laravel-glide.svg?style=flat-square)](https://github.com/spatie/laravel-glide/releases)
+[![Build status](https://img.shields.io/travis/spatie/laravel-glide.svg)](https://travis-ci.org/spatie/laravel-glide)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ad0422ca-e31f-44a3-b01a-ee5ec757b18d.svg)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-glide)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -147,6 +147,14 @@ Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/)
 For the moment Glide doesn't clean the cache directory, but that functionality [may be coming in a future release](https://github.com/thephpleague/glide/issues/7). Until then it's your job to keep an eye on it's total size. If it becomes too big, you can opt to delete the files inside it.
 ### Other filesystems
 Currently this package only supports images stored on the local filesystem. Glide itself leverages [Flysystem](https://github.com/thephpleague/flysystem) to read and write to various filesystems. I'd like support for that in this package let me know or feel free to submit a pull request.
+
+## Testing
+
+You can run the tests with:
+
+```bash
+vendor/bin/codecept run
+```
 
 ## Credits
 

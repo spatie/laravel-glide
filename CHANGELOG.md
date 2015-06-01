@@ -2,6 +2,12 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.3
+- Fixing Issue that would create a invalid signature based on empty get parameters
+
+## 2.2.2
+- Moved github repo from freekmurze to spatie
+
 ## 2.2.1
 - Fixed an issue where the controller would not work when the default namespace is not "App"
 
