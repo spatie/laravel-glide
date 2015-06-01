@@ -67,7 +67,7 @@ class GlideImage
      */
     public function modify($modificationParameters)
     {
-        $modificationParameters = $this->convertParametersToString($modificationParameters);
+        $modificationParameters = $this->convertParametersToString(array_filter($modificationParameters));
 
         $this->modificationParameters = $modificationParameters;
 

@@ -45,6 +45,12 @@ class GlideImageController extends Controller {
      */
     protected function validateSignature()
     {
+        foreach($this->request->all() as $parameter => $value) {
+            if(empty($value) === true) {
+                $this->request->query->remove($parameter);
+            }
+        }
+        
         if($this->glideConfig['useSecureURLs']) {
             SignatureFactory::create($this->app['config']->get('app.key'))
                 ->validateRequest($this->request);
