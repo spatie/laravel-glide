@@ -37,7 +37,7 @@ class GlideImageController extends Controller {
 
         $server = $this->setGlideServer($this->setImageSource(), $this->setImageCache(), $api);
 
-        echo $server->outputImage($this->request);
+        return $server->outputImage($this->request);
     }
 
     /**
@@ -45,6 +45,12 @@ class GlideImageController extends Controller {
      */
     protected function validateSignature()
     {
+        foreach($this->request->all() as $parameter => $value) {
+            if(empty($value) === true) {
+                $this->request->query->remove($parameter);
+            }
+        }
+        
         if($this->glideConfig['useSecureURLs']) {
             SignatureFactory::create($this->app['config']->get('app.key'))
                 ->validateRequest($this->request);

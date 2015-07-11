@@ -27,11 +27,11 @@ class GlideImageTest extends \Codeception\TestCase\Test
     {
         $glide = $this->_before();
 
-        $imagePath = 'testFile.jpg';
+        $sourceFile = 'testFile.jpg';
 
-        $glide->load($imagePath);
+        $glide->load($sourceFile);
 
-        $this->assertAttributeContains('testFile.jpg', 'imagePath', $glide);
+        $this->assertAttributeContains('testFile.jpg', 'sourceFile', $glide);
     }
 
     public function testBaseURL()
@@ -75,7 +75,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
         $this->assertAttributeContains($modificationParameters['filt'], 'modificationParameters', $glide);
     }
 
-    public function testgetURL()
+    public function testGetURL()
     {
         $glide = $this->_before();
 
@@ -89,13 +89,24 @@ class GlideImageTest extends \Codeception\TestCase\Test
     }
 
 
-    public function test_toString()
+    public function testToString()
     {
         $glide = $this->_before();
 
         $glide->load('testFile.jpg', ['filt' => 'greyscale']);
 
         $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
+
+        $this->assertEquals($expectedUrl, $glide->__toString());
+    }
+
+    public function testFiltersEmptyParameters()
+    {
+        $glide = $this->_before();
+
+        $glide->load('testFile.jpg', ['foo' => '' ]);
+
+        $expectedUrl = '/testFile.jpg';
 
         $this->assertEquals($expectedUrl, $glide->__toString());
     }
