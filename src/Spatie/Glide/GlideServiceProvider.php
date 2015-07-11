@@ -1,10 +1,6 @@
 <?php namespace Spatie\Glide;
 
 use Illuminate\Support\ServiceProvider;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
-use League\Glide\Http\SignatureFactory;
-use League\Glide\Server;
 
 class GlideServiceProvider extends ServiceProvider
 {
@@ -27,36 +23,7 @@ class GlideServiceProvider extends ServiceProvider
 
         $glideConfig = $this->app['config']->get('laravel-glide::config');
 
-        $this->app['router']->get($glideConfig['baseURL'].'/{all}', function () use ($glideConfig) {
-
-            $request = $this->app['request'];
-
-            // Validate the signature
-            if($glideConfig['useSecureURLs'] == true) {
-                SignatureFactory::create($this->app['config']->get('app.key'))->validateRequest($request);
-            }
-
-            // Set image source
-            $source = new Filesystem(
-                new Local($glideConfig['source']['path'])
-            );
-
-            // Set image cache
-            $cache = new Filesystem(
-                new Local($glideConfig['cache']['path'])
-            );
-            $this->writeIgnoreFile($glideConfig['cache']['path']);
-
-            $api = GlideApiFactory::create();
-
-            // Setup Glide server
-            $server = new Server($source, $cache, $api);
-
-            $server->setBaseUrl($glideConfig['baseURL']);
-
-            echo $server->outputImage($request);
-
-        })->where('all', '.*');
+        $this->app['router']->get($glideConfig['baseURL'].'/{all}', 'Spatie\Glide\Controller\GlideImageController@index')->where('all', '.*');
     }
 
     /**
@@ -88,20 +55,6 @@ class GlideServiceProvider extends ServiceProvider
     public function provides()
     {
         return ['laravel-glide', 'laravel-glide-image'];
-    }
-
-    /**
-     * Copy the gitignore stub to the given directory
-     *
-     * @param $directory
-     */
-    public function writeIgnoreFile($directory)
-    {
-        $destinationFile = $directory.'/.gitignore';
-
-        if (!file_exists($destinationFile)) {
-            $this->app['files']->copy(__DIR__.'/../../stubs/gitignore.txt', $destinationFile);
-        }
     }
 
     /**
