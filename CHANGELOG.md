@@ -2,6 +2,7 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+- Fixed an issue where the controller would not work when the default namespace is not "App"
 - Add support for potential route caching packages
 - Added an option to disable the signing of urls
 - Prevent slashes from being encoded in a generated url
