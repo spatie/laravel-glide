@@ -5,7 +5,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Glide\Http\SignatureFactory;
 use League\Glide\Server;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\Application;
 use Spatie\Glide\GlideApiFactory;
 
 class GlideImageController extends Controller {
