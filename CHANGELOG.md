@@ -2,6 +2,11 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 1.3
+- Added support for using multiple Filesystems
+
+## 1.1.x
+
 - in some cases the wrong mime-type was return. This is fixed.
 - Fixing Issue that would create a invalid signature based on empty get parameters
 - Fixed an issue where the controller would not work when the default namespace is not "App"

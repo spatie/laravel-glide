@@ -13,6 +13,7 @@ class GlideImageController extends Controller {
     protected $app;
     protected $request;
     protected $glideConfig;
+    protected $disk;
 
     /**
      * @param Application $app
@@ -27,8 +28,10 @@ class GlideImageController extends Controller {
     /**
      * Output a generated Glide-image
      */
-    public function index()
+    public function index($disk = null)
     {
+        $this->setDisk($disk);
+
         $this->validateSignature();
 
         $this->writeIgnoreFile();
@@ -50,7 +53,7 @@ class GlideImageController extends Controller {
                 $this->request->query->remove($parameter);
             }
         }
-        
+
         if($this->glideConfig['useSecureURLs']) {
             SignatureFactory::create($this->app['config']->get('app.key'))
                 ->validateRequest($this->request);
@@ -64,9 +67,14 @@ class GlideImageController extends Controller {
      */
     protected function setImageSource()
     {
-        return (new Filesystem(new Local(
-            $this->glideConfig['source']['path']
-        )));
+        if ($this->disk && $this->app->bound('flysystem')) {
+            $filesystem = app('flysystem')->connection($this->disk);
+        } else {
+            $filesystem = (new Filesystem(new Local(
+                $this->glideConfig['source']['path']
+            )));
+        }
+        return $filesystem;
     }
 
     /**
@@ -77,8 +85,23 @@ class GlideImageController extends Controller {
     protected function setImageCache()
     {
         return (new Filesystem(new Local(
-            $this->glideConfig['cache']['path']
+            $this->glideConfig['cache']['path'] . DIRECTORY_SEPARATOR . $this->disk
         )));
+    }
+
+    /**
+     * Set the flysystem disk
+     *
+     */
+    protected function setDisk($disk)
+    {
+        $disks = $this->glideConfig['disks'];
+
+        if (!empty($disks) && in_array($disk, $disks)) {
+            $this->disk = $disk;
+        } else {
+            $this->disk = "";
+        }
     }
 
     /**
@@ -94,7 +117,7 @@ class GlideImageController extends Controller {
     {
         $server = new Server($source, $cache,$api);
 
-        $server->setBaseUrl($this->glideConfig['baseURL']);
+        $server->setBaseUrl($this->glideConfig['baseURL'] . DIRECTORY_SEPARATOR . $this->disk);
 
         return $server;
     }

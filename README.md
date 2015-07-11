@@ -77,6 +77,17 @@ return [
     ],
 
     /*
+     * Filesystem disks (Flysytem)
+     *
+     * Define an array of Filesystem disks, which use Flysystem.
+     *
+    */
+    'disks' => [
+        //'local',
+        //'awss3',
+    ],
+    
+    /*
      * The directory Glide will use to store it's cache
      * A .gitignore file will be automatically placed in this directory
      * so you don't accidentally end up committing these images
@@ -142,11 +153,19 @@ GlideImage::load('kayaks.jpg')
 
 Take a look at [the image API of Glide](http://glide.thephpleague.com/api/size/) to see which parameters you can pass to the ```modify```-method.
 
+### Using Other Filesystems
+Since Laravel 4 doesn't natively support Flysystem Filesystems, support is provided via the [Laravel-Flysystem](https://github.com/GrahamCampbell/Laravel-Flysystem) package.
+Make sure that is installed, and connections configured.  The key names used for the connection will be your disk names in the config file.
+You may set up and use as many disks as you'd like, the path of the file just needs to be prefixed with the disk name.
+Suppose you have an AWS S3 disk named "awss3", and in it there was a folder, images, with your file in it: 
+```php
+<img src="{{ GlideImage::load('/awss3/images/kayaks.jpg', ['w'=> 50, 'filt'=>'greyscale']) }}" />
+```
+If the disk name doesn't match any available disk, the path will fall back to the source path.
+
 ## Notes
 ### Cleaning the cache
 For the moment Glide doesn't clean the cache directory, but that functionality [may be coming in a future release](https://github.com/thephpleague/glide/issues/7). Until then it's your job to keep an eye on it's total size. If it becomes too big, you can opt to delete the files inside it.
-### Other filesystems
-Currently this package only supports images stored on the local filesystem. Glide itself leverages [Flysystem](https://github.com/thephpleague/flysystem) to read and write to various filesystems. I'd like support for that in this package let me know or feel free to submit a pull request.
 
 ## Testing
 
