@@ -12,6 +12,14 @@ Using this package you'll be able to generate image manipulations on the fly and
 
 It's also possible to generate an image manipulation separately and store it wherever you want.
 
+## Laravel compatibility
+
+ Laravel  | laravel-glide
+:---------|:----------
+ 4.2.x    | 1.x
+ 5.x      | 2.x
+
+
 ## Installation
 
 
@@ -73,7 +81,7 @@ return [
      *
      */
     'cache' => [
-        'path' => storage_path('glide-cache'),
+        'path' => storage_path('glide/cache'),
     ],
 
     /*
@@ -86,6 +94,12 @@ return [
      * The maximum allowed total image size in pixels
      */
     'maxSize' => 2000 * 2000
+
+    /*
+     * Glide has an extra feature to sign each generated URL with
+     * a private key to avoid possibility to alter the URL manually
+     */
+    'secureURLs' => true
 ];
 
 ```
