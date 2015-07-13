@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GlideImage
 {
-    protected $imagePath;
+    protected $sourceFile;
 
     protected $signKey;
 
@@ -15,16 +15,18 @@ class GlideImage
 
     protected $modificationParameters = [];
 
+    protected $useAbsolutePath = false;
+
     /**
      * Set the path to the image that needs to be converted
      *
-     * @param $imagePath
+     * @param $sourceFile
      * @param array $modificationParameters = []
      * @return $this
      */
-    public function load($imagePath, $modificationParameters = [])
+    public function load($sourceFile, $modificationParameters = [])
     {
-        $this->imagePath = $imagePath;
+        $this->sourceFile = $sourceFile;
 
         $this->modify($modificationParameters);
 
@@ -65,7 +67,7 @@ class GlideImage
      */
     public function modify($modificationParameters)
     {
-        $modificationParameters = $this->convertParametersToString($modificationParameters);
+        $modificationParameters = $this->convertParametersToString(array_filter($modificationParameters));
 
         $this->modificationParameters = $modificationParameters;
 
@@ -80,9 +82,10 @@ class GlideImage
      */
     public function getURL()
     {
-        $urlBuilder = UrlBuilderFactory::create('img', $this->signKey);
-
-        return $urlBuilder->getUrl(rawurlencode($this->imagePath), $this->modificationParameters);
+        $urlBuilder = UrlBuilderFactory::create($this->baseURL, $this->signKey);
+        
+        $encodedPath = implode('/', array_map('rawurlencode', explode('/', $this->sourceFile)));
+        return $urlBuilder->getUrl($encodedPath, $this->modificationParameters);
     }
 
     /**
@@ -95,9 +98,7 @@ class GlideImage
     {
         $glideApi = GlideApiFactory::create();
 
-        $inputImageData = file_get_contents(Config::get('laravel-glide::config.source.path').'/'.$this->imagePath);
-
-        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $inputImageData);
+        $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), file_get_contents($this->getPathToImage()));
 
         file_put_contents($outputFile, $outputImageData);
 
@@ -127,5 +128,32 @@ class GlideImage
 
         }, $modificationParameters);
 
+    }
+
+    /**
+     * Use an absolute path to the sourceFile (instead of using config source)
+     *
+     * @return $this
+     */
+    public function useAbsoluteSourceFilePath()
+    {
+        $this->useAbsolutePath = true;
+
+        return $this;
+    }
+
+    /**
+     * Get the path to the image
+     *
+     * @return string
+     */
+    private function getPathToImage()
+    {
+        if( $this->useAbsolutePath)
+        {
+            return $this->sourceFile;
+        }
+
+        return Config::get('laravel-glide::config.source.path').'/'.$this->sourceFile;
     }
 }

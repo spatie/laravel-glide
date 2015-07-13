@@ -1,6 +1,7 @@
 {
     "name": "spatie/laravel-glide",
     "description": "A Glide Service Provider for Laravel",
+    "homepage": "https://github.com/spatie/laravel-glide",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +15,8 @@
         "league/glide": "0.3.*"
     },
     "require-dev": {
-        "codeception/codeception": "2.*"
+        "codeception/codeception": "2.*",
+        "mockery/mockery": "~0.9.3"
     },
     "autoload": {
         "psr-0": {

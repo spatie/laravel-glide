@@ -27,11 +27,11 @@ class GlideImageTest extends \Codeception\TestCase\Test
     {
         $glide = $this->_before();
 
-        $imagePath = 'testFile.jpg';
+        $sourceFile = 'testFile.jpg';
 
-        $glide->load($imagePath);
+        $glide->load($sourceFile);
 
-        $this->assertAttributeContains('testFile.jpg', 'imagePath', $glide);
+        $this->assertAttributeContains('testFile.jpg', 'sourceFile', $glide);
     }
 
     public function testBaseURL()
@@ -75,7 +75,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
         $this->assertAttributeContains($modificationParameters['filt'], 'modificationParameters', $glide);
     }
 
-    public function testgetURL()
+    public function testGetURL()
     {
         $glide = $this->_before();
 
@@ -83,35 +83,31 @@ class GlideImageTest extends \Codeception\TestCase\Test
 
         $glide->getURL();
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->getURL());
     }
 
 
-    public function test_toString()
+    public function testToString()
     {
         $glide = $this->_before();
 
         $glide->load('testFile.jpg', ['filt' => 'greyscale']);
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
+        $expectedUrl = '/testFile.jpg?filt=greyscale'; //No signKey here.
 
         $this->assertEquals($expectedUrl, $glide->__toString());
     }
 
-    /*public function testSaveMethod()
+    public function testFiltersEmptyParameters()
     {
-        // --- Laravel Config doesn't load --- //
-
         $glide = $this->_before();
 
-        $glide->load('tests/_data/testFile.jpg', ['filt' => 'greyscale']);
+        $glide->load('testFile.jpg', ['foo' => '' ]);
 
-        $glide->save('tests/_output/savedFile.jpg');
+        $expectedUrl = '/testFile.jpg';
 
-        $expectedUrl = '/img/testFile.jpg?filt=greyscale'; //No signKey here.
-
-        //$this->assertEquals($expectedUrl, $glide->save('tests/_data/savedFile.jpg'));
-    }*/
+        $this->assertEquals($expectedUrl, $glide->__toString());
+    }
 }
