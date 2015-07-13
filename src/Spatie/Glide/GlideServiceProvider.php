@@ -1,6 +1,7 @@
 <?php namespace Spatie\Glide;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
 
 class GlideServiceProvider extends ServiceProvider
 {
@@ -67,12 +68,12 @@ class GlideServiceProvider extends ServiceProvider
     {
         if(! isset($glideConfig['useSecureURLs']))
         {
-            return $this->app['config']->get('app.key');
+            return Config::get('app.key');
         }
 
         if ($glideConfig['useSecureURLs'] === true)
         {
-            return $this->app['config']->get('app.key');
+            return Config::get('app.key');
         }
 
         return null;
