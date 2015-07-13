@@ -18,6 +18,9 @@
         "codeception/codeception": "2.*",
         "mockery/mockery": "~0.9.3"
     },
+    "suggest": {
+        "graham-campbell/flysystem": "Version 1.0 provides flysystem filesystem support for Laravel 4"
+    },
     "autoload": {
         "psr-0": {
             "Spatie\\Glide": "src/"

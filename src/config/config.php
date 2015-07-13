@@ -10,6 +10,17 @@ return [
     ],
 
     /*
+     * Filesystem disks (Flysytem)
+     *
+     * Define an array of Filesystem disks, which use Flysystem.
+     *
+    */
+    'disks' => [
+//        'local',
+//        'awss3',
+    ],
+
+    /*
      * The directory Glide will use to store it's cache
      * A .gitignore file will be automatically placed in this directory
      * so you don't accidentally end up committing these images

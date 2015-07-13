@@ -23,7 +23,7 @@ class GlideServiceProvider extends ServiceProvider
 
         $glideConfig = $this->app['config']->get('laravel-glide::config');
 
-        $this->app['router']->get($glideConfig['baseURL'].'/{all}', 'Spatie\Glide\Controller\GlideImageController@index')->where('all', '.*');
+        $this->app['router']->get($glideConfig['baseURL'].'/{disk?}/{all}', 'Spatie\Glide\Controller\GlideImageController@index')->where('all', '.*');
     }
 
     /**
