@@ -14,6 +14,8 @@ Using this package you'll be able to generate image manipulations on the fly and
 
 It's also possible to generate an image manipulation separately and store it wherever you want.
 
+Spatie is webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
 ## Laravel compatibility
 
  Laravel  | laravel-glide
@@ -160,6 +162,9 @@ vendor/bin/codecept run
 
 - [Freek Van der Herten](https:/murze.be)
 - [All Contributors](https://github.com/freekmurze/laravel-glide/contributors)
+
+## About Spatie
+Spatie is webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
 ## License
 
