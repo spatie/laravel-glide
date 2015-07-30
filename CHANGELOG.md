@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.5
+- fix memory leak.
+
 ## 2.2.4
 - in some cases the wrong mime-type was return. This is fixed.
 
