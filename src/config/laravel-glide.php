@@ -6,7 +6,7 @@ return [
      *
      */
     'source' => [
-        'path' => storage_path('images'),
+        'path' => storage_path('app/images'),
     ],
 
     /*
