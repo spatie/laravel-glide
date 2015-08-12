@@ -55,7 +55,8 @@ class GlideImageController extends Controller {
         }
 
         if($this->glideConfig['useSecureURLs']) {
-            SignatureFactory::create($this->app['config']->get('app.key'))
+            $key = $this->app->getRegistered("Spatie\\Glide\\GlideServiceProvider")->getSignKey($this->glideConfig);
+            SignatureFactory::create($key)
                 ->validateRequest($this->request);
         }
     }

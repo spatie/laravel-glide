@@ -44,7 +44,7 @@ return [
     /*
      * Glide has a feature to sign each generated URL with
      * a key to avoid the visitors of your site to alter the URL
-     * manually
+     * manually.  This may be true, false, or a custom key value.
      */
     'useSecureURLs' => true
 ];

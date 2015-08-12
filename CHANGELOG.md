@@ -2,6 +2,8 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+- Add suport for custom set secure url key 
+
 ## 1.1.0
 - Added support for using multiple Filesystems
 - in some cases the wrong mime-type was return. This is fixed.

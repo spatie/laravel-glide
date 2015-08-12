@@ -14,6 +14,7 @@ class SignKeyTest extends \Codeception\TestCase\Test
 
     public function _before()
     {
+        $this->app['config'] = Config::shouldReceive('get')->with('app.key')->andReturn('my-key')->getMock();
         $this->serviceProvider = new GlideServiceProvider($this->app);
     }
 
@@ -52,6 +53,22 @@ class SignKeyTest extends \Codeception\TestCase\Test
         $expectedResult = 'my-key';
 
         $glideConfig['useSecureURLs'] = true;
+
+        Config::shouldReceive('get')->with('app.key')->andReturn($expectedResult);
+
+        $result = $this->serviceProvider->getSignKey($glideConfig);
+
+        $this->assertEquals($expectedResult, $result);
+    }
+
+    /**
+     * Test if custom key is return if useSecureURLs is set to string
+     */
+    public function testTrueCustomSecureURL()
+    {
+        $expectedResult = 'custom-key';
+
+        $glideConfig['useSecureURLs'] = 'custom-key';
 
         Config::shouldReceive('get')->with('app.key')->andReturn($expectedResult);
 
