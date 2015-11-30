@@ -13,6 +13,7 @@
         "php": ">=5.4.0",
         "illuminate/support": "5.*",
         "league/glide": "0.3.*"
+        "intervention/glide": "<2.3.3"
     },
     "require-dev": {
         "codeception/codeception": "2.*",
