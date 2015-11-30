@@ -4,25 +4,16 @@ php:
   - 5.4
   - 5.5
   - 5.6
-  - 7.0
-
+  - hhvm
+  
 env:
   matrix:
     - PREFER_LOWEST="--prefer-lowest"
-    - PREFER_LOWEST=""
+    - PREFER_LOWEST=""  
 
 before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update --prefer-source $PREFER_LOWEST 
-  - printf "\n" | pecl install imagick
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - vendor/bin/codecept build
 
-script:
-  - phpunit --coverage-text --coverage-clover=coverage.clover
-
-after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
-
-branches:
-  only:
-    - master
-    - stable
+script: vendor/bin/codecept run
