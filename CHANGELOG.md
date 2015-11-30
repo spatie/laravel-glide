@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.6
+- temporary add constraint on Intervention package while investigating exif exception.
+
 ## 2.2.5
 - fix memory leak.
 
