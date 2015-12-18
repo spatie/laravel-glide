@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.2.8
+- fixed issue that prevented Glide from accessing exif data.
+
 ## 2.2.7
 - removing constraint on Intervention package.
 
