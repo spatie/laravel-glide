@@ -2,6 +2,11 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.0.0
+- added support for Glide 1.0.0
+- this package now requires PHP 7.0
+- removed all controller functionality
+
 ## 2.2.8
 - fixed issue that prevented Glide from accessing exif data.
 

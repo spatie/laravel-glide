@@ -24,8 +24,6 @@ class GlideImage
 
     public function modify(array $modificationParameters) : GlideImage
     {
-        $modificationParameters = $this->convertParametersToString(array_filter($modificationParameters));
-
         $this->modificationParameters = $modificationParameters;
 
         return $this;
@@ -33,7 +31,7 @@ class GlideImage
 
     public function save(string $outputFile) : string
     {
-        $glideServer = ServerFactory::create([]);
+        $glideServer = ServerFactory::create(['']);
 
         $glideServer->makeImage($outputFile, $this->modificationParameters);
 

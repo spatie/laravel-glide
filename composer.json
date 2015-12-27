@@ -13,13 +13,20 @@
         "php": "^7.0",
         "illuminate/support": "5.*",
         "league/glide": "^1.0"
+
     },
     "require-dev": {
-        "phpunit/phpunit": "4.*"
+        "phpunit/phpunit": "5.*",
+        "orchestra/testbench": "^3.2"
     },
     "autoload": {
         "psr-4": {
             "Spatie\\Glide\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\Glide\\Test\\": "tests"
         }
     },
     "minimum-stability": "stable"
