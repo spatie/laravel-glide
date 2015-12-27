@@ -1,10 +1,11 @@
-<?php namespace Spatie\Glide;
+<?php
+
+namespace Spatie\Glide;
 
 use Illuminate\Support\Facades\Facade;
 
 class GlideImageFacade extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

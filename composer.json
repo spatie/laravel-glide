@@ -10,16 +10,15 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": "^7.0",
         "illuminate/support": "5.*",
-        "league/glide": "0.3.*"
+        "league/glide": "^1.0"
     },
     "require-dev": {
-        "codeception/codeception": "2.*",
-        "mockery/mockery": "~0.9.3"
+        "phpunit/phpunit": "4.*"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Spatie\\Glide": "src/"
         }
     },
