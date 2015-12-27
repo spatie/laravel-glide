@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Glide": "src/"
+            "Spatie\\Glide\\": "src/"
         }
     },
     "minimum-stability": "stable"
