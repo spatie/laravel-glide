@@ -4,6 +4,7 @@ namespace Spatie\Glide\Test\Integration;
 
 use File;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\Glide\GlideServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -14,15 +15,10 @@ abstract class TestCase extends Orchestra
         $this->setUpTempTestFiles();
     }
 
-    /**
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return array
-     */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app) : array
     {
         return [
-            \Spatie\Glide\GlideServiceProvider::class,
+            GlideServiceProvider::class,
         ];
     }
 
@@ -39,12 +35,12 @@ abstract class TestCase extends Orchestra
         File::makeDirectory($directory);
     }
 
-    public function getTempDirectory($suffix = '')
+    public function getTempDirectory(string $suffix = '') : string
     {
         return __DIR__.'/temp'.($suffix == '' ? '' : '/'.$suffix);
     }
 
-    public function getTestJpg()
+    public function getTestJpg() : string
     {
         return __DIR__.'/testfiles/test.jpg';
     }

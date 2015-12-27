@@ -1,4 +1,4 @@
-# A Glide Server Provider for Laravel
+# Easily convert images with Glide
 [![Latest Version](https://img.shields.io/github/release/spatie/laravel-glide.svg?style=flat-square)](https://github.com/spatie/laravel-glide/releases)
 [![Build status](https://img.shields.io/travis/spatie/laravel-glide.svg)](https://travis-ci.org/spatie/laravel-glide)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ad0422ca-e31f-44a3-b01a-ee5ec757b18d.svg)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)

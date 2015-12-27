@@ -3,6 +3,7 @@
 namespace Spatie\Glide;
 
 use League\Glide\ServerFactory;
+use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
 
 class GlideImage
 {
@@ -17,6 +18,10 @@ class GlideImage
 
     public function setSourceFile(string $sourceFile) : GlideImage
     {
+        if (!file_exists($sourceFile)) {
+            throw new SourceFileDoesNotExist();
+        }
+
         $this->sourceFile = $sourceFile;
 
         return $this;
@@ -31,9 +36,18 @@ class GlideImage
 
     public function save(string $outputFile) : string
     {
-        $glideServer = ServerFactory::create(['']);
+        $sourceFileName = pathinfo($this->sourceFile, PATHINFO_BASENAME);
 
-        $glideServer->makeImage($outputFile, $this->modificationParameters);
+        $cacheDir = sys_get_temp_dir();
+
+        $glideServer = ServerFactory::create([
+            'source' => dirname($this->sourceFile),
+            'cache' => $cacheDir,
+        ]);
+
+        $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $this->modificationParameters);
+
+        rename($conversionResult, $outputFile);
 
         return $outputFile;
     }

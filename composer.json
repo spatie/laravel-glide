@@ -29,5 +29,8 @@
             "Spatie\\Glide\\Test\\": "tests"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
 }
