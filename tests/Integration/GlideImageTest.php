@@ -16,7 +16,7 @@ class GlideImageTest extends TestCase
 
         GlideImage::create($this->getTestJpg())
             ->modify(['w' => '50'])
-             ->save($targetFile);
+            ->save($targetFile);
 
         $this->assertFileExists($targetFile);
     }
