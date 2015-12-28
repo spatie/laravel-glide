@@ -2,20 +2,18 @@
 
 namespace Spatie\Glide;
 
-use League\Glide\Server;
 use League\Glide\ServerFactory;
 use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
 
 class GlideImage
 {
-
     protected $sourceFile;
 
     protected $modificationParameters = [];
 
     public static function create(string $sourceFile) : GlideImage
     {
-        return (new static)->setSourceFile($sourceFile);
+        return (new static())->setSourceFile($sourceFile);
     }
 
     public function setSourceFile(string $sourceFile) : GlideImage
@@ -45,7 +43,7 @@ class GlideImage
         $glideServer = ServerFactory::create([
             'source' => dirname($this->sourceFile),
             'cache' => $cacheDir,
-            'driver' => config('laravel-glide.driver')
+            'driver' => config('laravel-glide.driver'),
         ]);
 
         $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $this->modificationParameters);
