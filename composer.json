@@ -1,6 +1,6 @@
 {
     "name": "spatie/laravel-glide",
-    "description": "A Glide Service Provider for Laravel",
+    "description": "Easily convert images with Glide",
     "homepage": "https://github.com/spatie/laravel-glide",
     "license": "MIT",
     "authors": [
