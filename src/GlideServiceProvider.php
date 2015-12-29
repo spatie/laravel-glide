@@ -12,7 +12,7 @@ class GlideServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../resources/config/laravel-glide.php' => $this->app->configPath().'/'.'laravel-glide.php',
+            __DIR__.'/../config/laravel-glide.php' => $this->app->configPath().'/'.'laravel-glide.php',
         ], 'config');
     }
 
@@ -21,7 +21,7 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../resources/config/laravel-glide.php', 'laravel-glide');
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-glide.php', 'laravel-glide');
 
         $this->app->bind('laravel-glide-image', function () {
 
