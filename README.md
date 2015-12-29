@@ -9,7 +9,7 @@
 This package provides an easy to use class to manipulate images. Under the hood it leverages [Glide](http://glide.thephpleague.com/) to perform 
 the manipulations.
 
-Here's an example on how the package can be used:
+Here's an example of how the package can be used:
 
 ```php
 GlideImage::load($pathToImage)
