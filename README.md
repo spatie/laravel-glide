@@ -94,6 +94,16 @@ You can run the tests with:
 composer test
 ```
 
+## Previous versions
+
+Previous version on this package had PHP 5.4 support and the ability to generate 
+images on the fly from an url.
+
+The previous versions are unsupported, but they should still work in your older projects.
+
+- [Version 2 branch with Laravel 5 support](https://github.com/spatie/laravel-glide/tree/v2)
+- [Version 1 branch with Laravel 4 support](https://github.com/spatie/laravel-glide/tree/laravel-4)
+
 ## Credits
 
 - [Freek Van der Herten](https:/murze.be)
