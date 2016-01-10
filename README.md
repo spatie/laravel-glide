@@ -12,7 +12,7 @@ the manipulations.
 Here's an example of how the package can be used:
 
 ```php
-GlideImage::load($pathToImage)
+GlideImage::create($pathToImage)
 	->modify(['w'=> 50, 'filt'=>'greyscale'])
 	->save($pathToWhereToSaveTheManipulatedImage);
 ```
@@ -79,7 +79,7 @@ return [
 Here's a quick example that shows how an image can be modified:
 
 ```php
-GlideImage::load($pathToImage)
+GlideImage::create($pathToImage)
 	->modify(['w'=> 50, 'filt'=>'greyscale'])
 	->save($pathToWhereToSaveTheManipulatedImage);
 ```
