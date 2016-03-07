@@ -96,7 +96,7 @@ composer test
 
 ## Previous versions
 
-Previous version on this package had PHP 5.4 support and the ability to generate 
+Previous versions of this package had PHP 5.4 support and the ability to generate 
 images on the fly from an url.
 
 The previous versions are unsupported, but they should still work in your older projects.
