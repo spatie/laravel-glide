@@ -27,8 +27,8 @@ class GlideApiFactory
         // Set manipulators
         $manipulators = [
             new Orientation(),
-            new Rectangle(),
             new Size(Config::get('laravel-glide::config.maxSize')),
+            new Rectangle(),
             new Brightness(),
             new Contrast(),
             new Gamma(),
