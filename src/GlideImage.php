@@ -4,6 +4,8 @@ namespace Spatie\Glide;
 
 use League\Glide\ServerFactory;
 use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Adapter\Local;
 
 class GlideImage
 {
@@ -48,13 +50,42 @@ class GlideImage
 
         $cacheDir = sys_get_temp_dir();
 
+        $watermarksFolder = '';
+
+        if(array_has($this->modificationParameters, 'mark')) {
+
+            $pathArray = explode('/', $this->modificationParameters['mark']);
+
+            if(count($pathArray) > 1){
+                $watermark = collect($pathArray)->last();
+                $watermarksFolder = collect($pathArray)->first();
+                $modificationParameters = collect($this->modificationParameters)->map(function($item, $key) use ($watermark){
+
+                    if($key === 'mark'){
+                        $item = $watermark;
+                    }
+
+                    return $item;
+                })->toArray();
+            }
+
+//            dd($modificationParameters);
+        }
+
+//        dd($watermarksFolder);
+
         $glideServer = ServerFactory::create([
             'source' => dirname($this->sourceFile),
             'cache' => $cacheDir,
             'driver' => config('laravel-glide.driver'),
+            'watermarks' => !empty($watermarksFolder) ? new Filesystem(new Local($watermarksFolder)) : null
         ]);
 
-        $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $this->modificationParameters);
+//        dd($glideServer);
+
+
+
+        $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $modificationParameters ?? $this->modificationParameters);
 
         rename($conversionResult, $outputFile);
 
