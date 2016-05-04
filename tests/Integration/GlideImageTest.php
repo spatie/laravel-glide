@@ -53,7 +53,5 @@ class GlideImageTest extends TestCase
 
         $this->assertFileExists($targetFile);
         $this->assertNotEquals($targetImageHash, $testImageHash);
-
     }
-
 }

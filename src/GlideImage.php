@@ -77,6 +77,7 @@ class GlideImage
             if ($key === 'mark') {
                 $item = $pathParts['basename'];
             }
+
             return $item;
 
         })->toArray();
