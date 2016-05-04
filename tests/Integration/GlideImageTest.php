@@ -7,9 +7,7 @@ use Spatie\Glide\GlideImage;
 
 class GlideImageTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_can_modify_an_image()
     {
         $targetFile = __DIR__.'/temp/conversion.jpg';
@@ -21,9 +19,7 @@ class GlideImageTest extends TestCase
         $this->assertFileExists($targetFile);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_can_copy_a_file()
     {
         $targetFile = __DIR__.'/temp/conversion.jpg';
@@ -34,13 +30,21 @@ class GlideImageTest extends TestCase
         $this->assertFileExists($targetFile);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_throw_an_exception_if_the_source_file_does_not_exist()
     {
         $this->setExpectedException(SourceFileDoesNotExist::class);
 
         GlideImage::create('blabla');
     }
+
+    /** @test */
+    public function it_will_add_watermark()
+    {
+        $this->setExpectedException(SourceFileDoesNotExist::class);
+
+        GlideImage::create('blabla');
+    }
+
+
 }

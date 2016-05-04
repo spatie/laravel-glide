@@ -16,8 +16,8 @@ class GlideImage
 
     /**
      * @var array The modification the need to be made on the image.
-     * Take a look at Glide's image API to see which parameters are possible.
-     * http://glide.thephpleague.com/1.0/api/quick-reference/
+     *            Take a look at Glide's image API to see which parameters are possible.
+     *            http://glide.thephpleague.com/1.0/api/quick-reference/
      */
     protected $modificationParameters = [];
 
@@ -50,45 +50,38 @@ class GlideImage
 
         $cacheDir = sys_get_temp_dir();
 
-        $watermarksFolder = '';
-
-        if(array_has($this->modificationParameters, 'mark')) {
-
-            $pathArray = explode('/', $this->modificationParameters['mark']);
-
-            if(count($pathArray) > 1){
-                $watermark = collect($pathArray)->last();
-                $watermarksFolder = collect($pathArray)->first();
-                $modificationParameters = collect($this->modificationParameters)->map(function($item, $key) use ($watermark){
-
-                    if($key === 'mark'){
-                        $item = $watermark;
-                    }
-
-                    return $item;
-                })->toArray();
-            }
-
-//            dd($modificationParameters);
+        if (array_has($this->modificationParameters, 'mark')) {
+            list($watermarksFolder, $modificationParameters) = $this->getWatermarkParameters();
         }
-
-//        dd($watermarksFolder);
 
         $glideServer = ServerFactory::create([
             'source' => dirname($this->sourceFile),
             'cache' => $cacheDir,
             'driver' => config('laravel-glide.driver'),
-            'watermarks' => !empty($watermarksFolder) ? new Filesystem(new Local($watermarksFolder)) : null
+            'watermarks' => !empty($watermarksFolder) ? new Filesystem(new Local($watermarksFolder)) : null,
         ]);
-
-//        dd($glideServer);
-
-
 
         $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $modificationParameters ?? $this->modificationParameters);
 
         rename($conversionResult, $outputFile);
 
         return $outputFile;
+    }
+
+    protected function getWatermarkParameters() : array
+    {
+        $path = collect(explode('/', $this->modificationParameters['mark']));
+        $watermark = $path->last();
+        $watermarksFolder = $path->take($path->count() - 1)->implode('/');
+        $modificationParameters = collect($this->modificationParameters)->map(function ($item, $key) use ($watermark) {
+
+            if ($key === 'mark') {
+                $item = $watermark;
+            }
+
+            return $item;
+        })->toArray();
+
+        return array($watermarksFolder, $modificationParameters);
     }
 }
