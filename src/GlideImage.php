@@ -71,16 +71,16 @@ class GlideImage
     protected function getWatermarkParameters() : array
     {
         $pathParts = pathinfo($this->modificationParameters['mark']);
-        $watermark = $pathParts['basename'];
-        $watermarksFolder = $pathParts['dirname'];
-        $modificationParameters = collect($this->modificationParameters)->map(function ($item, $key) use ($watermark) {
+
+        $modificationParameters = collect($this->modificationParameters)->map(function ($item, $key) use ($pathParts) {
 
             if ($key === 'mark') {
-                $item = $watermark;
+                $item = $pathParts['basename'];
             }
             return $item;
+
         })->toArray();
 
-        return [$watermarksFolder, $modificationParameters];
+        return [$pathParts['dirname'], $modificationParameters];
     }
 }
