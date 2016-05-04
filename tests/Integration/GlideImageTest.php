@@ -39,12 +39,21 @@ class GlideImageTest extends TestCase
     }
 
     /** @test */
-    public function it_will_add_watermark()
+    public function it_can_add_a_watermark_to_an_image()
     {
-        $this->setExpectedException(SourceFileDoesNotExist::class);
+        $targetFile = __DIR__.'/watermarked/conversion.jpg';
+        $watermark = __DIR__.'/watermarks/watermark.png';
 
-        GlideImage::create('blabla');
+        GlideImage::create($this->getTestJpg())
+        ->modify(['mark' => $watermark, 'markw' => '40', 'markh' => '40', 'markpad' => '15', 'markpos' => 'top-right'])
+        ->save($targetFile);
+
+        $targetImageHash = hash_file('sha1', $targetFile);
+        $testImageHash = hash_file('sha1', $this->getTestJpg());
+
+        $this->assertFileExists($targetFile);
+        $this->assertNotEquals($targetImageHash, $testImageHash);
+
     }
-
 
 }

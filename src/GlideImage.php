@@ -81,6 +81,6 @@ class GlideImage
             return $item;
         })->toArray();
 
-        return array($watermarksFolder, $modificationParameters);
+        return [$watermarksFolder, $modificationParameters];
     }
 }
