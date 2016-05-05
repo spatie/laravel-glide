@@ -41,17 +41,21 @@ class GlideImageTest extends TestCase
     /** @test */
     public function it_can_add_a_watermark_to_an_image()
     {
-        $targetFile = __DIR__.'/watermarked/conversion.jpg';
-        $watermark = __DIR__.'/watermarks/watermark.png';
+        $watermark = __DIR__.'/stubs/watermark.png';
+        $targetFile = __DIR__.'/temp/watermarked.jpg';
 
         GlideImage::create($this->getTestJpg())
-        ->modify(['mark' => $watermark, 'markw' => '40', 'markh' => '40', 'markpad' => '15', 'markpos' => 'top-right'])
-        ->save($targetFile);
+            ->modify([
+                'mark' => $watermark,
+                'markw' => '40',
+                'markh' => '40',
+                'markpad' => '15',
+                'markpos' => 'top-right',
+            ])
+            ->save($targetFile);
 
-        $targetImageHash = hash_file('sha1', $targetFile);
-        $testImageHash = hash_file('sha1', $this->getTestJpg());
+        $watermarkedStub = __DIR__.'/stubs/watermarked.jpg';
 
-        $this->assertFileExists($targetFile);
-        $this->assertNotEquals($targetImageHash, $testImageHash);
+        $this->assertFileEquals($watermarkedStub, $targetFile);
     }
 }
