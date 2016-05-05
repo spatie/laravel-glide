@@ -54,8 +54,7 @@ class GlideImageTest extends TestCase
             ])
             ->save($targetFile);
 
-        $watermarkedStub = __DIR__.'/stubs/watermarked.jpg';
-
-        $this->assertFileEquals($watermarkedStub, $targetFile);
+        $this->assertFileNotEquals($this->getTestJpg(), $targetFile);
+        $this->assertFileExists($targetFile);
     }
 }
