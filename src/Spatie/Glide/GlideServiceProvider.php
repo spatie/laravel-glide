@@ -1,11 +1,12 @@
-<?php namespace Spatie\Glide;
+<?php
+
+namespace Spatie\Glide;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class GlideServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -15,12 +16,9 @@ class GlideServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
     public function boot()
     {
-
         $this->publishes([
             __DIR__.'/../../config/laravel-glide.php' => config_path('laravel-glide.php'),
         ], 'config');
@@ -32,8 +30,6 @@ class GlideServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -60,7 +56,7 @@ class GlideServiceProvider extends ServiceProvider
     }
 
     /**
-     * Copy the gitignore stub to the given directory
+     * Copy the gitignore stub to the given directory.
      *
      * @param $directory
      */
@@ -74,23 +70,20 @@ class GlideServiceProvider extends ServiceProvider
     }
 
     /**
-     * Check the configuration to return the correct signKey
+     * Check the configuration to return the correct signKey.
      *
      * @param $glideConfig
-     * @return null
      */
     public function getSignKey($glideConfig)
     {
-        if(! isset($glideConfig['useSecureURLs']))
-        {
+        if (!isset($glideConfig['useSecureURLs'])) {
             return Config::get('app.key');
         }
 
-        if ($glideConfig['useSecureURLs'] === true)
-        {
+        if ($glideConfig['useSecureURLs'] === true) {
             return Config::get('app.key');
         }
 
-        return null;
+        return;
     }
 }

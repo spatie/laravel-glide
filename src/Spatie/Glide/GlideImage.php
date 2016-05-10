@@ -1,4 +1,5 @@
 <?php
+
 namespace Spatie\Glide;
 
 use Illuminate\Support\Facades\Config;
@@ -18,10 +19,11 @@ class GlideImage
     protected $useAbsolutePath = false;
 
     /**
-     * Set the path to the image that needs to be converted
+     * Set the path to the image that needs to be converted.
      *
      * @param $sourceFile
      * @param array $modificationParameters = []
+     *
      * @return $this
      */
     public function load($sourceFile, $modificationParameters = [])
@@ -34,9 +36,10 @@ class GlideImage
     }
 
     /**
-     * Set the base URL
+     * Set the base URL.
      *
-     * @param  string $baseURL
+     * @param string $baseURL
+     *
      * @return $this
      */
     public function setBaseURL($baseURL)
@@ -47,9 +50,10 @@ class GlideImage
     }
 
     /**
-     * Set the signkey used to secure the image url
+     * Set the signkey used to secure the image url.
      *
      * @param $signKey
+     *
      * @return $this
      */
     public function setSignKey($signKey)
@@ -60,9 +64,10 @@ class GlideImage
     }
 
     /**
-     * Set the modification parameters
+     * Set the modification parameters.
      *
      * @param array $modificationParameters
+     *
      * @return $this
      */
     public function modify($modificationParameters)
@@ -74,24 +79,25 @@ class GlideImage
         return $this;
     }
 
-
     /**
-     * Generate the url
+     * Generate the url.
      *
      * @return string
      */
     public function getURL()
     {
         $urlBuilder = UrlBuilderFactory::create($this->baseURL, $this->signKey);
-        
+
         $encodedPath = implode('/', array_map('rawurlencode', explode('/', $this->sourceFile)));
+
         return $urlBuilder->getUrl($encodedPath, $this->modificationParameters);
     }
 
     /**
-     * Save the image to the given outputFile
+     * Save the image to the given outputFile.
      *
      * @param $outputFile
+     *
      * @return string the URL to the saved image
      */
     public function save($outputFile)
@@ -101,8 +107,8 @@ class GlideImage
         $outputImageData = $glideApi->run(Request::create(null, null, $this->modificationParameters), $this->getPathToImage());
 
         file_put_contents($outputFile, $outputImageData);
-        
-       /**
+
+       /*
         * Triggering the garbage collection solves a memory leak in an underlying package.
         */
         gc_collect_cycles();
@@ -111,7 +117,7 @@ class GlideImage
     }
 
     /**
-     * The string representation of this object is the URL to the image
+     * The string representation of this object is the URL to the image.
      *
      * @return string
      */
@@ -124,19 +130,19 @@ class GlideImage
      * Cast 'w' & 'h' modificationParameters to string to fix the ctype_digit issue.
      *
      * @param array $modificationParameters
+     *
      * @return array $modificationParameters
      */
     public function convertParametersToString($modificationParameters)
     {
-        return array_map(function($value) {
-            return  (string)$value;
+        return array_map(function ($value) {
+            return  (string) $value;
 
         }, $modificationParameters);
-
     }
 
     /**
-     * Use an absolute path to the sourceFile (instead of using config source)
+     * Use an absolute path to the sourceFile (instead of using config source).
      *
      * @return $this
      */
@@ -148,14 +154,13 @@ class GlideImage
     }
 
     /**
-     * Get the path to the image
+     * Get the path to the image.
      *
      * @return string
      */
     private function getPathToImage()
     {
-        if( $this->useAbsolutePath)
-        {
+        if ($this->useAbsolutePath) {
             return $this->sourceFile;
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Spatie\Glide;
 
 use Illuminate\Support\Facades\Config;
@@ -18,12 +19,11 @@ use League\Glide\Api\Manipulator\Size;
 
 class GlideApiFactory
 {
-
     public static function create()
     {
         // Set image manager
         $imageManager = new ImageManager([
-            'driver' => Config::get('laravel-glide.driver')
+            'driver' => Config::get('laravel-glide.driver'),
         ]);
 
         // Set manipulators

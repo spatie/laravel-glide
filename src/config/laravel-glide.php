@@ -41,5 +41,5 @@ return [
      * a key to avoid the visitors of your site to alter the URL
      * manually
      */
-    'useSecureURLs' => true
+    'useSecureURLs' => true,
 ];
