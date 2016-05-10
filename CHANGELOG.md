@@ -2,6 +2,11 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.3.0
+- image driver is now configurable
+- fixed the maxsize option
+- code reformatted for psr2
+
 ## 2.2.8
 - fixed issue that prevented Glide from accessing exif data.
 
