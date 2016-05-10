@@ -63,7 +63,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
         $modificationParameters = [
             'w' => 300,
             'h' => 300,
-            'filt' => 'sepia'
+            'filt' => 'sepia',
         ];
 
         $glide->modify($modificationParameters);
@@ -88,7 +88,6 @@ class GlideImageTest extends \Codeception\TestCase\Test
         $this->assertEquals($expectedUrl, $glide->getURL());
     }
 
-
     public function testToString()
     {
         $glide = $this->_before();
@@ -104,7 +103,7 @@ class GlideImageTest extends \Codeception\TestCase\Test
     {
         $glide = $this->_before();
 
-        $glide->load('testFile.jpg', ['foo' => '' ]);
+        $glide->load('testFile.jpg', ['foo' => '']);
 
         $expectedUrl = '/testFile.jpg';
 

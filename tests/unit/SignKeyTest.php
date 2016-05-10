@@ -18,7 +18,7 @@ class SignKeyTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * Test is null is returned when useSecureURLs is false
+     * Test is null is returned when useSecureURLs is false.
      */
     public function testFalseSecureURL()
     {
@@ -30,7 +30,7 @@ class SignKeyTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * Test if a SignKey is returned when useSecureURLs is not defined
+     * Test if a SignKey is returned when useSecureURLs is not defined.
      */
     public function testSecureURLSettingNotDefined()
     {
@@ -45,7 +45,7 @@ class SignKeyTest extends \Codeception\TestCase\Test
     }
 
     /**
-     * Test if a key is return if useSecureURLs is configured true
+     * Test if a key is return if useSecureURLs is configured true.
      */
     public function testTrueSecureURL()
     {
