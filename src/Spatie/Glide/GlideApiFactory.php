@@ -22,7 +22,9 @@ class GlideApiFactory
     public static function create()
     {
         // Set image manager
-        $imageManager = new ImageManager();
+        $imageManager = new ImageManager([
+            'driver' => Config::get('laravel-glide::config.driver')
+        ]);
 
         // Set manipulators
         $manipulators = [
