@@ -23,14 +23,14 @@ class GlideApiFactory
     {
         // Set image manager
         $imageManager = new ImageManager([
-            'driver' => Config::get('laravel-glide::config.driver')
+            'driver' => Config::get('laravel-glide.driver')
         ]);
 
         // Set manipulators
         $manipulators = [
             new Orientation(),
             new Rectangle(),
-            new Size(Config::get('laravel-glide::config.maxSize')),
+            new Size(Config::get('laravel-glide.maxSize')),
             new Brightness(),
             new Contrast(),
             new Gamma(),
