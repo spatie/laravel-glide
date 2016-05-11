@@ -2,7 +2,12 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.3.1 - 2016-05-11
+
+- fixed the tagging issue of 2.3.0
+
 ## 2.3.0
+* This version is wrongly tagged, do not use *
 - image driver is now configurable
 - fixed the maxsize option
 - code reformatted for psr2
