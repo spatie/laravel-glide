@@ -2,7 +2,12 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.3.2 - 2016-05-13
+
+- make sure the default values from the config file are being use
+
 ## 2.3.1 - 2016-05-11
+*This version contains a breaking bug, do not use*
 
 - fixed the tagging issue of 2.3.0
 
