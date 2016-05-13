@@ -2,6 +2,10 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 2.3.3 - 2016-05-13
+
+- fix for invalid driver when serviceProvider is not registered
+
 ## 2.3.2 - 2016-05-13
 
 - make sure the default values from the config file are being used
