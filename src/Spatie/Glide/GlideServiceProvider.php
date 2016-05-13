@@ -33,6 +33,8 @@ class GlideServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-glide.php', 'laravel-glide');
+
         $this->app->bind('laravel-glide-image', function () {
 
             $glideImage = new GlideImage();
