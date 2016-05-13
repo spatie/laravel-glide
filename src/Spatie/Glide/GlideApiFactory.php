@@ -23,7 +23,7 @@ class GlideApiFactory
     {
         // Set image manager
         $imageManager = new ImageManager([
-            'driver' => Config::get('laravel-glide.driver'),
+            'driver' => self::getDriver()
         ]);
 
         // Set manipulators
@@ -43,5 +43,19 @@ class GlideApiFactory
 
         // Set API
         return new Api($imageManager, $manipulators);
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDriver()
+    {
+        $driver = Config::get('laravel-glide.driver');
+
+        if (! $driver) {
+            $driver = 'gd';
+        }
+
+        return $driver;
     }
 }
