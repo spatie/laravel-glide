@@ -39,7 +39,7 @@ class GlideImageController extends Controller
 
         $server = $this->setGlideServer($this->setImageSource(), $this->setImageCache(), $api);
 
-        return $server->outputImage($this->request);
+        $server->outputImage($this->request);
     }
 
     /**
