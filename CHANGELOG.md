@@ -4,7 +4,7 @@ All notable changes to laravel-glide will be documented in this file.
 
 ## 2.3.4 - 2016-07-20
 
-- fixed a bug where the `GlideImageController` would output the result twice
+- fixed a bug where `GlideImageController` would output the result twice
 
 ## 2.3.3 - 2016-05-13
 
