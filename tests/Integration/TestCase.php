@@ -3,8 +3,8 @@
 namespace Spatie\Glide\Test\Integration;
 
 use File;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\Glide\GlideServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
