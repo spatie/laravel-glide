@@ -4,6 +4,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d/mini.png)](https://insight.sensiolabs.com/projects/ad0422ca-e31f-44a3-b01a-ee5ec757b18d)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-glide.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-glide)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![StyleCI](https://styleci.io/repos/29484127/shield?branch=master)](https://styleci.io/repos/29484127)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-glide.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-glide)
 
 This package provides an easy to use class to manipulate images. Under the hood it leverages [Glide](http://glide.thephpleague.com/) to perform 
