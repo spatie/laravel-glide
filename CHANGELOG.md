@@ -2,6 +2,9 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.1.0 - 2017-01-24
+- support for Laravel 5.4
+
 ## 3.0.1 - 2016-05-05
 - fixed creation of watermarks
 
