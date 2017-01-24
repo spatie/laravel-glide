@@ -26,7 +26,7 @@ class GlideImage
 
     public function setSourceFile(string $sourceFile) : GlideImage
     {
-        if (!file_exists($sourceFile)) {
+        if (! file_exists($sourceFile)) {
             throw new SourceFileDoesNotExist();
         }
 

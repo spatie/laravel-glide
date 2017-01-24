@@ -24,9 +24,7 @@ class GlideServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-glide.php', 'laravel-glide');
 
         $this->app->bind('laravel-glide-image', function () {
-
             return new GlideImage();
-
         });
     }
 
