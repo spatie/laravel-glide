@@ -32,5 +32,15 @@
     "minimum-stability": "stable",
     "scripts": {
         "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Spatie\\Glide\\GlideServiceProvider"
+            ],
+            "aliases": {
+                "GlideImage": "Spatie\\Glide\\GlideImageFacade
+            }
+        }
     }
 }
