@@ -18,16 +18,6 @@ GlideImage::create($pathToImage)
 	->save($pathToWhereToSaveTheManipulatedImage);
 ```
 
-Spatie is a webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment you are required to send us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-The best postcards will get published on the open source page on our website.
-
 ## Installation
 
 You can install the package through Composer.
@@ -36,24 +26,16 @@ You can install the package through Composer.
 composer require spatie/laravel-glide
 ```
 
-You must install this service provider.
+In Laravel 5.5 the service provider and facade will automatically get registered. In older versions of the framework just add the service provider and facade in `config/app.php` file:
 
 ```php
-
-// config/app.php
-
 'providers' => [
     ...
     Spatie\Glide\GlideServiceProvider::class,
     ...
 ];
-```
 
-This package also comes with a facade, which provides an easy way to generate images.
-
-```php
-
-// config/app.php
+...
 
 'aliases' => [
 	...
@@ -103,6 +85,10 @@ You can run the tests with:
 composer test
 ```
 
+### Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
 ## Previous versions
 
 Previous versions of this package had PHP 5.4 support and the ability to generate 
@@ -113,13 +99,29 @@ The previous versions are unsupported, but they should still work in your older 
 - [Version 2 branch with Laravel 5 support](https://github.com/spatie/laravel-glide/tree/v2)
 - [Version 1 branch with Laravel 4 support](https://github.com/spatie/laravel-glide/tree/laravel-4)
 
+### Security
+
+If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
+
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 ## Credits
 
 - [Freek Van der Herten](https:/murze.be)
 - [All Contributors](https://github.com/freekmurze/laravel-glide/contributors)
 
-## About Spatie
-Spatie is a webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+## Support us
+
+Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
