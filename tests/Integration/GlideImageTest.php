@@ -33,7 +33,7 @@ class GlideImageTest extends TestCase
     /** @test */
     public function it_will_throw_an_exception_if_the_source_file_does_not_exist()
     {
-        $this->setExpectedException(SourceFileDoesNotExist::class);
+        $this->expectException(SourceFileDoesNotExist::class);
 
         GlideImage::create('blabla');
     }
