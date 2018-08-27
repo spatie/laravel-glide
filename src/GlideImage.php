@@ -19,12 +19,12 @@ class GlideImage
      */
     protected $modificationParameters = [];
 
-    public static function create(string $sourceFile) : GlideImage
+    public static function create(string $sourceFile) : self
     {
         return (new static())->setSourceFile($sourceFile);
     }
 
-    public function setSourceFile(string $sourceFile) : GlideImage
+    public function setSourceFile(string $sourceFile) : self
     {
         if (! file_exists($sourceFile)) {
             throw new SourceFileDoesNotExist();
@@ -35,7 +35,7 @@ class GlideImage
         return $this;
     }
 
-    public function modify(array $modificationParameters) : GlideImage
+    public function modify(array $modificationParameters) : self
     {
         $this->modificationParameters = $modificationParameters;
 
