@@ -2,7 +2,7 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
-## 3.2.2 - 2019-02-27
+## 3.2.3 - 2019-02-27
 - support for Laravel 5.8
 
 ## 3.2.2 - 2018-08-28
