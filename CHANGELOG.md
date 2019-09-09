@@ -7,7 +7,7 @@ All notable changes to laravel-glide will be documented in this file.
 - make compatible with Laravel 6
 
 ## 3.3.0 - 2019-02-27
-- drop support for PHP 7.2
+- drop support for PHP 7.1 and below
 - drop support for Laravel 5.7 and below
 
 ## 3.2.3 - 2019-02-27
