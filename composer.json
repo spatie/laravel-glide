@@ -12,7 +12,7 @@
     "require": {
         "php": "^7.2",
         "laravel/framework": "~5.8.0|^6.0|^7.0",
-        "league/glide": "^1.0"
+        "league/glide": "^1.5"
 
     },
     "require-dev": {
