@@ -2,8 +2,8 @@
 
 namespace Spatie\Glide\Test\Integration;
 
-use Spatie\Glide\GlideImage;
 use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
+use Spatie\Glide\GlideImage;
 
 class GlideImageTest extends TestCase
 {
