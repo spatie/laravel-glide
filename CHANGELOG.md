@@ -2,6 +2,10 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.6.0 - 2020-09-08
+
+- make compatible with Laravel 8
+
 ## 3.5.0 - 2020-03-03
 
 - make compatible with Laravel 7
