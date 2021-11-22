@@ -9,7 +9,7 @@ class GlideImageFacade extends Facade
     /**
      * Get the registered name of the component.
      */
-    protected static function getFacadeAccessor() : string
+    protected static function getFacadeAccessor(): string
     {
         return 'laravel-glide-image';
     }

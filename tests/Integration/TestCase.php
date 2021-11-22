@@ -15,7 +15,7 @@ abstract class TestCase extends Orchestra
         $this->setUpTempTestFiles();
     }
 
-    protected function getPackageProviders($app) : array
+    protected function getPackageProviders($app): array
     {
         return [
             GlideServiceProvider::class,
@@ -35,12 +35,12 @@ abstract class TestCase extends Orchestra
         File::makeDirectory($directory);
     }
 
-    public function getTempDirectory(string $suffix = '') : string
+    public function getTempDirectory(string $suffix = ''): string
     {
         return __DIR__.'/temp'.($suffix == '' ? '' : '/'.$suffix);
     }
 
-    public function getTestJpg() : string
+    public function getTestJpg(): string
     {
         return __DIR__.'/testfiles/test.jpg';
     }
