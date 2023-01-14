@@ -2,6 +2,19 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.7.0 - 2023-01-14
+
+### What's Changed
+
+- Add PHP 8.2 Support by @patinthehat in https://github.com/spatie/laravel-glide/pull/87
+- Laravel 10.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-glide/pull/88
+
+### New Contributors
+
+- @patinthehat made their first contribution in https://github.com/spatie/laravel-glide/pull/87
+
+**Full Changelog**: https://github.com/spatie/laravel-glide/compare/3.6.2...3.7.0
+
 ## 3.6.2 - 2022-02-01
 
 - Add Laravel 9 support
