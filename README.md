@@ -1,7 +1,6 @@
 # Easily convert images with Glide
 [![Latest Version](https://img.shields.io/github/release/spatie/laravel-glide.svg?style=flat-square)](https://github.com/spatie/laravel-glide/releases)
-![Test Status](https://img.shields.io/github/workflow/status/spatie/laravel-glide/run-tests?label=tests)
-![Code Style Status](https://img.shields.io/github/workflow/status/spatie/laravel-glide/Check%20&%20fix%20styling?label=code%20style)
+[![run-tests](https://github.com/spatie/laravel-glide/actions/workflows/run-tests.yml/badge.svg)](https://github.com/spatie/laravel-glide/actions/workflows/run-tests.yml)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-glide.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-glide)
 
