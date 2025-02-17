@@ -2,6 +2,14 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.8.1 - 2025-02-17
+
+### What's Changed
+
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-glide/pull/94
+
+**Full Changelog**: https://github.com/spatie/laravel-glide/compare/3.8.0...3.8.1
+
 ## 3.8.0 - 2024-03-23
 
 ### What's Changed
