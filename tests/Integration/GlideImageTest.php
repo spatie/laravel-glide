@@ -2,12 +2,13 @@
 
 namespace Spatie\Glide\Test\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
 use Spatie\Glide\GlideImage;
 
 class GlideImageTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_modify_an_image()
     {
         $targetFile = __DIR__.'/temp/conversion.jpg';
@@ -19,7 +20,7 @@ class GlideImageTest extends TestCase
         $this->assertFileExists($targetFile);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_copy_a_file()
     {
         $targetFile = __DIR__.'/temp/conversion.jpg';
@@ -30,7 +31,7 @@ class GlideImageTest extends TestCase
         $this->assertFileExists($targetFile);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_throw_an_exception_if_the_source_file_does_not_exist()
     {
         $this->expectException(SourceFileDoesNotExist::class);
@@ -38,7 +39,7 @@ class GlideImageTest extends TestCase
         GlideImage::create('blabla');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_add_a_watermark_to_an_image()
     {
         $watermark = __DIR__.'/stubs/watermark.png';
