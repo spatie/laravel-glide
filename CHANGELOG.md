@@ -2,6 +2,10 @@
 
 All notable changes to laravel-glide will be documented in this file.
 
+## 3.8.2 - 2026-02-21
+
+Support Laravel 13
+
 ## 3.8.1 - 2025-02-17
 
 ### What's Changed
