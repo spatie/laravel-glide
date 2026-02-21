@@ -2,9 +2,9 @@
 
 namespace Spatie\Glide\Test\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use Spatie\Glide\Exceptions\SourceFileDoesNotExist;
 use Spatie\Glide\GlideImage;
-use PHPUnit\Framework\Attributes\Test;
 
 class GlideImageTest extends TestCase
 {
